@@ -1,53 +1,50 @@
+@import "bootstrap/grid.scss";
 @import "base/variables.scss";
 
-@import "components/card.scss";
+@import "components/detail.scss";
+@import "components/order.scss";
+@import "components/button.scss";
+@import "components/status.scss";
 
+@import "layout/header.scss";
+@import "layout/board.scss";
+@import "layout/panel.scss";
 
 html{
   font-size: 10px;
   padding: 0;
   margin: 0;
   cursor: default;
+  height: 100%;
 }
 
 body{
   padding: 0;
   margin: 0;
-  font-family: 'Nunito', sans-serif;
+  height: auto;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 100;
   text-rendering: optimizeLegibility;
   color: #eee;
   letter-spacing: .04rem;
-}
-
-h1,h2,h3,h4,h5,h6,p{
-  margin: 0;
-  padding: 0;
+  background-repeat: no-repeat;
 }
 
 #root{
-  position: relative;
-  background: #fff;
+  padding: 0 30px;
+  min-height: 100vh;
+  background: linear-gradient(35deg, $primary-blue, #212944);
+  overflow: auto;
 }
 
 .container{
   width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 30px;
-  box-sizing: border-box;
+  max-width: 1400px;
 }
 
-.header{
-  width: 100%;
-  height: 300px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-.board{
-  width: 100%;
-  height: 500px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .09);
+@include media-breakpoint-down(xs) {
+  #root{
+    padding: 0 10px;
+  }
 }

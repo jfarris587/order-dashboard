@@ -1,0 +1,17 @@
+.status-symbol{
+  width: 7px;
+  height: 7px;
+  margin-left: 5px;
+  display: inline-block;
+  border-radius: 50px;
+
+  &.open{
+    background: #29f055;
+  }
+  &.pending{
+    background: #fada34;
+  }
+  &.closed{
+    background: #f65252;
+  }
+}

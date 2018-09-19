@@ -164,6 +164,7 @@ module.exports = {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
+                  sourceMap: true
                 },
               },
               {
@@ -190,7 +191,7 @@ module.exports = {
           },
           {
             test: /\.scss$/,
-            loaders:[
+            use: [
               require.resolve('style-loader'),
               require.resolve('css-loader'),
               require.resolve('sass-loader')

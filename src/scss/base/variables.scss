@@ -1,4 +1,45 @@
-$gradient-1: #FBAB7E;
-$gradient-2: #e9bd4d;
-$gradient-3: #F7CE68;
-$gradient-4: #f7d173;
+$primary-blue: #1e2439;
+$secondary-blue: #2e3858;
+
+$primary-gray: #eee;
+$primary-pink: #d905fb;
+$primary-teal: #05fbf4;
+
+$detail-1: linear-gradient(
+  to left,
+  $primary-teal 0%,
+  #00a19c 100%
+);
+$detail-2: linear-gradient(
+  to left,
+  $primary-pink 0%,
+  #85009a 100%
+);
+$detail-3: linear-gradient(
+  to left,
+  $primary-teal 0%,
+  #00a19c 100%
+);
+$detail-4: linear-gradient(
+  to left,
+  $primary-pink 0%,
+  #85009a 100%
+);
+
+h1,h2,h3,h4,h5,h6,p{
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+  font-size: 3.5rem;
+}
+
+p{
+  font-size: 1.4rem;
+}
+
+button{
+  font-family: 'Quicksand', sans-serif;
+}

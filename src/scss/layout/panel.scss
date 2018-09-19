@@ -1,0 +1,31 @@
+.panel{
+  margin-bottom: 8px;
+
+  .controls{
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    p{
+      margin-right: auto;
+    }
+
+    .button{
+      display: block;
+    }
+  }
+}
+
+
+@include media-breakpoint-down(xs) {
+  .panel > .controls{
+    flex-flow: row;
+    justify-content: center;
+
+
+    p{
+      display: none;
+    }
+  }
+}

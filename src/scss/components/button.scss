@@ -1,0 +1,30 @@
+.button{
+  outline: none;
+  border: none;
+  padding: 10px 35px;
+
+  background: transparent;
+  color: $primary-pink;
+  font-size: 1.45rem;
+  font-weight: 700;
+
+  border: 2px solid $primary-pink;
+  border-radius: 1000px;
+  opacity: .6;
+
+  margin: 0 10px;
+
+  &:hover{
+    opacity: .8;
+    box-shadow: 0 0 2px 1px rgba($primary-pink, .5);
+  }
+
+  &--blue{
+    color: $primary-teal;
+    border-color: $primary-teal;
+
+    &:hover{
+      box-shadow: 0 0 2px 1px rgba($primary-teal, .5);
+    }
+  }
+}

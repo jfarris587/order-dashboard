@@ -1,0 +1,24 @@
+.card{
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, .1);
+  border-radius: 20px;
+  flex:1;
+  height: 250px;
+
+
+  &-first{
+    background-color: rgba($gradient-1, .5);
+    background-image: linear-gradient(62deg, rgba($gradient-1, .5) 0%, rgba($gradient-2, .5) 100%);
+  }
+
+  &-second{
+    background-color: rgba($gradient-3, .5);
+    background-image: linear-gradient(62deg, rgba($gradient-2, .5) 0%, rgba($gradient-4, .5) 50%, rgba($gradient-2, .5) 100%);
+    margin: 0 30px;
+  }
+
+  &-third{
+    background-color: rgba($gradient-2, .5);
+    background-image: linear-gradient(62deg, rgba($gradient-3, .5) 0%, rgba($gradient-1, .5) 100%);
+  }
+
+}

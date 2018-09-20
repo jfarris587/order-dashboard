@@ -2,28 +2,31 @@ $primary-blue: #1e2439;
 $secondary-blue: #2e3858;
 
 $primary-gray: #eee;
-$primary-pink: #d905fb;
-$primary-teal: #05fbf4;
+
+
+$order-open:#37ab51;
+$order-pending:#d6c150;
+$order-closed:#cd4c4c;
 
 $detail-1: linear-gradient(
   to left,
-  $primary-teal 0%,
-  #00a19c 100%
+  $order-open 0%,
+  $order-open 100%
 );
 $detail-2: linear-gradient(
   to left,
-  $primary-pink 0%,
-  #85009a 100%
+  $order-pending 0%,
+  $order-pending 100%
 );
 $detail-3: linear-gradient(
   to left,
-  $primary-teal 0%,
-  #00a19c 100%
+  $order-closed 0%,
+  $order-closed 100%
 );
 $detail-4: linear-gradient(
   to left,
-  $primary-pink 0%,
-  #85009a 100%
+  #33c3bf 0%,
+  #33c3bf 100%
 );
 
 h1,h2,h3,h4,h5,h6,p{

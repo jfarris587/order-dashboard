@@ -3,8 +3,10 @@
 
 @import "components/detail.scss";
 @import "components/order.scss";
+@import "components/expanded.scss";
 @import "components/button.scss";
 @import "components/status.scss";
+@import "components/entry.scss";
 
 @import "layout/header.scss";
 @import "layout/board.scss";
@@ -28,6 +30,10 @@ body{
   color: #eee;
   letter-spacing: .04rem;
   background-repeat: no-repeat;
+}
+
+input{
+  font-family: 'Quicksand', sans-serif;
 }
 
 #root{

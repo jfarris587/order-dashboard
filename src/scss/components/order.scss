@@ -1,58 +1,82 @@
 .order{
   height: 50px;
   overflow: hidden;
-  background:rgba(#fff,.10);
+  background: #434C69;
   border-bottom: 1px solid $secondary-blue;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  z-index: 1;
 
   &__detail{
     height: 100%;
     display: flex;
-    padding: 0 17px;
+    flex:100;
+    padding: 0 10px;
+    overflow: hidden;
+
+    &.name{
+      flex: 70;
+    }
+    &.od{
+      flex: 50;
+    }
 
     &:first-child{
       padding-left: 25px;
+      max-width: 60px;
     }
 
     &:last-child{
-      padding-right: 25px;
+      flex:50;
+      padding-right: 35px;
+
     }
 
-    &.total{
-      margin-left: auto;
-      margin-right: 20px;
-    }
+    &:nth-last-child(-n+2){
+      justify-content: flex-end;
 
-    /*&.status{
-      &:after{
-        content: "";
-        width: 7px;
-        height: 7px;
-        margin-left: 5px;
-        display: inline-block;
-        border-radius: 50px;
-        background: red;
+      .entry{
+        text-align: right;
       }
-    }*/
+    }
 
-    p{
-      margin: auto;
+    p, i{
+      margin: auto 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    i{
+      font-size: 1.7rem;
     }
   }
 }
+
+.sections{
+  background:rgba(#fff,.15);
+  color: $primary-blue;
+  p{
+    font-weight: 600;
+  }
+}
+
 
 @include media-breakpoint-down(sm) {
   .order__detail.od{
     display: none;
   }
-}
-
-@include media-breakpoint-down(xs) {
   .order__detail.dd{
     display: none;
   }
+}
+
+@include media-breakpoint-down(xs) {
+    .order__detail.description{
+    display: none;
+  }
+
   .order__detail.total{
     display: none;
   }

@@ -1,17 +1,26 @@
-.status-symbol{
-  width: 7px;
-  height: 7px;
-  margin-left: 5px;
-  display: inline-block;
-  border-radius: 50px;
+.symbol{
+  &:after{
+    content: "";
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    border-radius: 50px;
+    margin: auto 0 auto 15px;
+  }
 
   &.open{
-    background: #29f055;
+    &:after{
+      background: $order-open;
+    }
   }
   &.pending{
-    background: #fada34;
+    &:after{
+      background: $order-pending;
+    }
   }
   &.closed{
-    background: #f65252;
+    &:after{
+      background: $order-closed;
+    }
   }
 }

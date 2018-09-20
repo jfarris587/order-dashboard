@@ -2,10 +2,12 @@
   height: 175px;
   background: #eee;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, .1);
-  margin: 0 10px;
+  border-radius: 3px;
+  margin: 0 5px;
   background: left bottom $secondary-blue no-repeat;
-  background-size: 100% 0px;
-  transition: all 150ms ease-in;
+  background-size: 100% 1px;
+  transition: background 150ms ease-in;
+  position: relative;
 
   &:hover{
     background-size: 100% 5px;
@@ -13,35 +15,43 @@
   }
 
   h1{
-    padding-top: 15px;
+    padding-top: 35px;
     padding-left: 15px;
-    font-size: 8rem;
-    line-height: 7rem;
+    font-size: 6rem;
+    line-height: 1.4rem;
     font-weight: 300;
 
     span{
-      font-size: 2.5rem;
-
+      font-size: 1.7rem;
+      margin-left: 5px;
     }
+  }
+
+  i{
+    position: absolute;
+    bottom: 15px;
+    left: 12px;
+    font-size: 5.75rem;
+    color: #5f6885;
   }
 
   &-1{
     background-image: $detail-1;
-    margin: 0 20px 0 0;
+    margin: 0 5px 0 0;
   }
 
   &-2{
-    margin: 0 15px 0 10px;
+    margin: 0 5px 0 5px;
     background-image: $detail-2;
   }
 
   &-3{
-    margin: 0 10px 0 15px;
+    margin: 0 5px 0 5px;
     background-image: $detail-3;
   }
 
   &-4{
-    margin: 0 0 0 20px;
+    margin: 0 0 0 5px;
     background-image: $detail-4;
   }
 
@@ -76,7 +86,7 @@
   }
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(xs) {
   .detail{
     margin: 0 0 10px 0;
 

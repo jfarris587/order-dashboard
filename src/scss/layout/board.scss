@@ -1,8 +1,13 @@
 .board{
   width: 100%;
-  height: 500px;
+  min-height: 4 * (50px);
   margin-bottom: 50px;
   border-radius: 3px;
   overflow: hidden;
   background: $secondary-blue;
+
+  .orders{
+    position: relative;
+    z-index: 0;
+  }
 }

@@ -1,0 +1,40 @@
+.information{
+  height: 0;
+  max-height: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: -1;
+  background: #434C69;
+  transition: max-height 500ms ease-in-out;
+
+
+  &.expanded{
+    height: auto;
+    max-height: 500px;
+    border-bottom: 1px solid $secondary-blue;
+  }
+
+  &__info{
+    margin: 25px 0;
+
+    p{
+      margin: 0 25px 5px 25px;
+      text-transform: capitalize;
+      font-size: 1.4rem;
+      font-weight: 100;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      
+      .symbol{
+        &:after{
+          margin: auto 0 auto 5px;
+        }
+      }
+
+      span{
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+    }
+  }
+}

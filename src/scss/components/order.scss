@@ -21,6 +21,10 @@
     &.od{
       flex: 50;
     }
+    &.description{
+      flex: 120;
+      padding-right: 50px;
+    }
 
     &:first-child{
       padding-left: 25px;
@@ -36,9 +40,6 @@
     &:nth-last-child(-n+2){
       justify-content: flex-end;
 
-      .entry{
-        text-align: right;
-      }
     }
 
     p, i{
@@ -54,7 +55,7 @@
   }
 }
 
-.sections{
+.labels{
   background:rgba(#fff,.15);
   color: $primary-blue;
   p{
@@ -62,8 +63,7 @@
   }
 }
 
-
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   .order__detail.od{
     display: none;
   }
@@ -71,6 +71,8 @@
     display: none;
   }
 }
+
+
 
 @include media-breakpoint-down(xs) {
     .order__detail.description{

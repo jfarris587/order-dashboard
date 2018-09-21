@@ -1,15 +1,26 @@
 .entry{
-  outline: none;
-  border: none;
-  background: none;
-  color: #eee;
-  text-align: left;
+  overflow: hidden;
+  background: #434C69;
+  border-bottom: 1px solid $secondary-blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  z-index: 1;
+  padding: 10px 0;
 
-  &::placeholder{
-    color: #8a8a8a;
+  &__detail{
+    height: 100%;
+    padding: 0 10px;
+    overflow: hidden;
     font-weight: 600;
+    margin: 0 25px;
+
+    p{
+      font-weight: 600;
+      font-size: 1.5rem;
+      padding: 3px 0;
+    }
   }
 
-  &:nth-last-child(-n+2){
-  }
 }

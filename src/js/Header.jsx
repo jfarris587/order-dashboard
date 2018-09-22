@@ -7,8 +7,8 @@ const Header = (props) =>{
   return (
     <div className="header container">
       <div className="title row">
-          <h1>Loreum Ipsum</h1>
-          <p>loreum ipsum valuet et consequitor tullio, sed quamquam ritue.</p>
+          <h1>BizBoard</h1>
+          <p>Dashboard for tracking orders from clients...</p>
       </div>
       <div className="details row">
         {props.details.map((detail, i) => (

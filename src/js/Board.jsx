@@ -9,7 +9,6 @@ const Board = (props) =>{
     <div className="board container">
       <div className="orders">
         <Labels />
-        <Entry />
         
         {props.orders.map((order, i) => (
           <Order

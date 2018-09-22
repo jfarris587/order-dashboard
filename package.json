@@ -2,7 +2,7 @@
   "name": "nutritionx",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jfarris587.github.io/nutrition-x/",
+  "homepage": "https://jfarris587.github.io/order-dashboard/",
   "dependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",

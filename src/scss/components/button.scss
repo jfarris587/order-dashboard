@@ -1,7 +1,8 @@
 .button{
   outline: none;
   border: none;
-  padding: 10px 35px;
+  width: 175px;
+  padding: 10px 5px;
 
   background: transparent;
   color: #6979ad;
@@ -21,6 +22,15 @@
   &:hover{
     opacity: 1;
     box-shadow: 0 0 2px 1px rgba(#6979ad, .2);
+  }
+
+  &--pink{
+    color: #c63baf;
+    border-color: #c63baf;
+
+    &:hover{
+      box-shadow: 0 0 2px 1px rgba(#c63baf, .2);
+    }
   }
 
   &--blue{

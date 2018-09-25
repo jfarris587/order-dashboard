@@ -2,6 +2,7 @@ export default
 
   [
     {
+      id:1,
       name: "David Johnson",
       description: "short Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       od: "9-1-2018",
@@ -10,6 +11,7 @@ export default
       status: "pending"
     },
     {
+      id:2,
       name: "Ezekiel Elliot",
       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       od: "9-21-2018",
@@ -18,6 +20,7 @@ export default
       status: "open"
     },
     {
+      id:3,
       name: "Jordan Farris",
       description: "longer description goes here to replace elipsis.longer description goes here to replace elipsis/longer description goes here to replace elipsis",
       od: "12-1-2018",
@@ -26,6 +29,7 @@ export default
       status: "open"
     },
     {
+      id:4,
       name: "Dak Prescott",
       description: "short Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       od: "9-1-2018",
@@ -34,6 +38,7 @@ export default
       status: "closed"
     },
     {
+      id:5,
       name: "Odell Beckham",
       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       od: "9-21-2018",
@@ -42,6 +47,7 @@ export default
       status: "closed"
     },
     {
+      id:6,
       name: "Tony Romo",
       description: "longer description goes here to replace elipsis.longer description goes here to replace elipsis/longer description goes here to replace elipsis",
       od: "12-1-2018",

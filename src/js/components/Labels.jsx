@@ -15,7 +15,7 @@ const Labels = (props) =>{
 
       <div className="order__detail total"><p>total</p></div>
 
-      <div className="order__detail symbol"><p>symbol</p></div>
+      <div className="order__detail symbol"><p>status</p></div>
     </div>
     );
 }

@@ -1,5 +1,4 @@
 .information{
-  height: 0;
   max-height: 0;
   width: 100%;
   overflow: hidden;
@@ -9,7 +8,6 @@
 
 
   &.expanded{
-    height: auto;
     max-height: 500px;
     border-bottom: 1px solid $secondary-blue;
   }

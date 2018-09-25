@@ -9,14 +9,17 @@ const Board = (props) =>{
     <div className="board container">
       <div className="orders">
         <Labels />
-        
+        <Entry
+          addOrder={props.addOrder}
+          entryExpanded={props.entryExpanded}
+          expandEntry={props.expandEntry}
+        />
+
         {props.orders.map((order, i) => (
           <Order
-            type={"order"}
-            key={i}
+            key={order.id}
             id={i}
             data={props.orders[i]}
-            expandOrder={props.expandOrder}
           />
         ))}
 

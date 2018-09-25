@@ -29,3 +29,9 @@
     }
   }
 }
+
+@include media-breakpoint-down(xs) {
+  .panel{
+    margin-bottom: 13px;
+  }
+}

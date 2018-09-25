@@ -11,17 +11,45 @@ class App extends Component {
 
     this.state = {
       details: [11, 5, 63, 102],
-      orders: Settings
+      orders: Settings,
+      entryExpanded: false
     };
   }
 
-  testAdd = (a,b) => {
-    return (a+b);
+  addOrder = () =>{
+    var tempState = this.state;
+
+    var form = document.getElementById("entry").elements;
+    var name = form[0].value;
+    var od = form[1].value;
+    var dd = form[2].value;
+    var description = form[3].value;
+    var total = form[4].value;
+    var id = tempState.orders.length + 1;
+
+    if(name === "" || od === "" || dd === "" || description === ""|| total === ""){
+      return;
+    }
+
+    var orderObj = {
+      id: id,
+      name: name,
+      description: description,
+      od: od,
+      dd: dd,
+      total: total,
+      status: "open"
+    }
+
+    tempState.orders.push(orderObj);
+    tempState.entryExpanded = !tempState.entryExpanded;
+    this.setState(tempState);
   }
 
-  expandOrder = (order) => {
-    var element = document.getElementsByClassName('information')[order];
-    element.classList.toggle('expanded');
+  expandEntry = () =>{
+    var tempState = this.state;
+    tempState.entryExpanded = !tempState.entryExpanded;
+    this.setState(tempState);
   }
 
   render() {
@@ -34,10 +62,14 @@ class App extends Component {
           <Header
             details={this.state.details}
           />
-          <Panel />
+          <Panel
+            expandEntry={this.expandEntry}
+          />
           <Board
             orders={this.state.orders}
-            expandOrder={this.expandOrder}
+            addOrder={this.addOrder}
+            entryExpanded = {this.state.entryExpanded}
+            expandEntry={this.expandEntry}
           />
         </React.Fragment>
       );

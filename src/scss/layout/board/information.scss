@@ -1,0 +1,64 @@
+.information{
+  max-height: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: -1;
+  background: #434C69;
+  transition: max-height 700ms ease-in-out;
+
+
+  &.expanded{
+    max-height: 300px;
+  }
+
+  &__info{
+    margin: 10px 0 25px 0;
+
+    p{
+      margin: 0 25px 7px 25px;
+      text-transform: capitalize;
+      font-size: 1.5rem;
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      span{
+        font-size: 1.4rem;
+        font-weight: 100;
+        display: inline;
+        //margin-right: 5px;
+      }
+
+      .symbol{
+        margin-right: 10px;
+        opacity: .3;
+
+        &:hover:not(.selected){
+          opacity: 1;
+          font-weight: 900;
+        }
+
+        &:after{
+          margin: auto 0 auto 5px;
+          top: -1px;
+          position: relative;
+        }
+
+        &.selected{
+          opacity: 1;
+        }
+      }
+    }
+
+    .delete{
+      color: #c63baf;
+      opacity: .7;
+      cursor: pointer;
+      text-transform: lowercase;
+
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}

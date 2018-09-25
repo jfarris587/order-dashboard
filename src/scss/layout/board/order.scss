@@ -1,3 +1,7 @@
+.order-wrapper{
+  border-top: 1px solid $secondary-blue;
+}
+
 .order{
   height: 50px;
   overflow: hidden;
@@ -6,10 +10,6 @@
   justify-content: flex-start;
   align-items: center;
   z-index: 1;
-
-  &:not(:first-child){
-    border-top: 1px solid $secondary-blue;
-  }
 
   &__detail{
     height: 100%;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Status from './Status.jsx';
 
 class Order extends Component {
   constructor(props){
@@ -12,7 +13,7 @@ class Order extends Component {
       description: this.props.data.description,
       od: this.props.data.od,
       dd: this.props.data.od,
-      total: this.props.data.dd,
+      total: this.props.data.total,
       status: this.props.data.status,
     };
   }
@@ -23,15 +24,30 @@ class Order extends Component {
     this.setState(tempState);
   }
 
+  componentWillReceiveProps(nextProps) {
+    var tempState = this.state;
+    tempState.id = this.props.id;
+    this.setState(tempState);
+    //console.log(this.props.id);
+  }
+
   render() {
-    console.log("RENDERED");
     var expanded = "";
     if(this.state.expanded){
       expanded = " expanded";
     }
 
+    //console.log(this.state.id);
+
+    const statusArray = ["open", "pending", "closed"];
+    var StatusList = [];
+
+    for(let i = 0; i < 3; i++){
+      StatusList.push(<Status key={i} status={i} selected={this.state.status} changeStatus={this.props.changeStatus}/>);
+    }
+
     return (
-      <React.Fragment>
+      <div className="order-wrapper">
         <div className="order"  onClick={() => this.expandOrder(this.state.id)}>
           <div className="order__detail toggle"><i className="fas fa-bars"></i></div>
 
@@ -43,25 +59,28 @@ class Order extends Component {
 
           <div className="order__detail dd"><p>{this.state.dd}</p></div>
 
-          <div className="order__detail total"><p>{this.state.total}</p></div>
+          <div className="order__detail total"><p>$ {this.state.total}</p></div>
 
-          <div className={"order__detail symbol "+this.state.status}><p>{this.state.status}</p></div>
+          <div className={"order__detail symbol "+statusArray[this.state.status]}><p>{statusArray[this.state.status]}</p></div>
         </div>
 
         {this.state.name &&
           <div className={"information" + expanded}>
             <div className="information__info">
-              <p><span>Client: </span>{this.state.name}</p>
-              <p><span>Description: </span> {this.state.description}</p>
-              <p><span>Order Date: </span> {this.state.od}</p>
-              <p><span>Deliver Date: </span> {this.state.dd}</p>
-              <p><span>Total: </span>${this.state.total}</p>
-              <p className={"symbol "+this.state.status}><span>Status: </span> {this.state.status}</p>
+              <p>Client: <span>{this.state.name}</span></p>
+              <p>Description: <span> {this.state.description}</span></p>
+              <p>Order Date: <span> {this.state.od}</span></p>
+              <p>Deliver Date: <span> {this.state.dd}</span></p>
+              <p>Total: <span>${this.state.total}</span></p>
+              <p>
+                Status:
+                {StatusList}
+              </p>
+              <p className="delete" onClick={() => this.props.deleteOrder(this.state.id)}>delete</p>
             </div>
           </div>
         }
-
-      </React.Fragment>
+      </div>
     );
   }
 }

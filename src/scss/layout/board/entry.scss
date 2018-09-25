@@ -1,7 +1,7 @@
 .entry{
   overflow: hidden;
   background: #434C69;
-  //border-bottom: 1px solid $secondary-blue;
+  border-top: 0px solid rgba(255, 255, 255, 0.15);
   z-index: 1;
   padding: 0 0 0 25px;
   display: flex;
@@ -9,7 +9,8 @@
   justify-content: flex-start;
   align-items: flex-start;
   max-height: 0;
-  transition: max-height 700ms ease-in-out;
+  transition: all 700ms ease-in-out;
+  //transition: max-height 700ms ease-in-out;
 
   button{
     margin: 10px 25px 15px 0 ;
@@ -26,7 +27,7 @@
     flex-wrap: wrap;
 
     &:first-child{
-      margin-top: 10px;
+      margin-top: 20px;
     }
 
 
@@ -50,6 +51,22 @@
 
       &::placeholder{
         color: rgba(#fff, .5);
+      }
+      &::-webkit-datetime-edit {
+        color: rgba(#fff, .5);
+      }
+      &:valid::-webkit-datetime-edit {
+        color: black;
+      }
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button,
+      &::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin: 0;
       }
     }
 
@@ -75,7 +92,8 @@
   }
 
   &.expanded{
-    max-height: 900px;
+    max-height: 600px;
+    border-top: 25px solid rgba(255, 255, 255, 0.15);
   }
 }
 
@@ -90,9 +108,14 @@
     }
 
     &__buttons{
-      margin: 0 auto;
+      width: 100%;
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap-reverse;
       button{
-        margin: 2px auto 5px auto ;
+        margin: auto;
+        margin-bottom: 12px;
       }
     }
 

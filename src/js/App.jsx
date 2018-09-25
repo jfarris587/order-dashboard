@@ -12,8 +12,21 @@ class App extends Component {
     this.state = {
       details: [11, 5, 63, 102],
       orders: Settings,
-      entryExpanded: false
+      add:{
+        mode: false
+      },
+      delete:{
+        mode: false,
+        selected:[]
+      }
     };
+  }
+
+  addingOrders = () =>{
+    var tempState = this.state;
+    tempState.add.mode = !tempState.add.mode;
+    tempState.delete.mode = false;
+    this.setState(tempState);
   }
 
   addOrder = () =>{
@@ -42,13 +55,39 @@ class App extends Component {
     }
 
     tempState.orders.push(orderObj);
-    tempState.entryExpanded = !tempState.entryExpanded;
+    tempState.add.mode = !tempState.add.mode;
     this.setState(tempState);
   }
 
-  expandEntry = () =>{
+  deletingOrders = () =>{
     var tempState = this.state;
-    tempState.entryExpanded = !tempState.entryExpanded;
+    tempState.delete.mode = !tempState.delete.mode;
+    tempState.add.mode = false;
+
+    this.setState(tempState);
+  }
+
+  deleteOrder = (i) =>{
+    var tempState = this.state;
+    tempState.orders.forEach(function(order, j){
+
+      if(order.id === i){
+        tempState.orders.splice(j, 1);
+      }
+    });
+
+    this.setState(tempState);
+  }
+
+  changeStatus = (i, status) =>{
+    var tempState = this.state;
+    tempState.orders.forEach(function(order, j){
+
+      if(order.id === i){
+        tempState.orders[j].status = status;
+      }
+    });
+
     this.setState(tempState);
   }
 
@@ -63,13 +102,18 @@ class App extends Component {
             details={this.state.details}
           />
           <Panel
-            expandEntry={this.expandEntry}
+            delete={this.state.delete}
+            add={this.state.add}
+            deletingOrders={this.deletingOrders}
+            addingOrders={this.addingOrders}
           />
           <Board
             orders={this.state.orders}
             addOrder={this.addOrder}
-            entryExpanded = {this.state.entryExpanded}
-            expandEntry={this.expandEntry}
+            add={this.state.add}
+            addingOrders={this.addingOrders}
+            deleteOrder={this.deleteOrder}
+            changeStatus={this.changeStatus}
           />
         </React.Fragment>
       );

@@ -2,6 +2,7 @@
   outline: none;
   border: none;
   width: 175px;
+  height: 45px;
   padding: 10px 5px;
 
   background: transparent;
@@ -40,5 +41,17 @@
     &:hover{
       box-shadow: 0 0 2px 1px rgba(#6979ad, .2);
     }
+  }
+
+  &.deleting{
+    opacity: 1;
+    color: #c63baf;
+    border-color: #c63baf;
+  }
+
+  &.adding{
+    opacity: 1;
+    color: #42c63b;
+    border-color: #42c63b;
   }
 }

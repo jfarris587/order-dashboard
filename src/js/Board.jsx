@@ -5,21 +5,26 @@ import Entry from './components/Entry.jsx'
 
 const Board = (props) =>{
 
+  var reversedArray = props.orders.slice().reverse();
   return (
     <div className="board container">
       <div className="orders">
-        <Labels />
         <Entry
           addOrder={props.addOrder}
-          entryExpanded={props.entryExpanded}
+          add={props.add}
           expandEntry={props.expandEntry}
         />
 
-        {props.orders.map((order, i) => (
+        <Labels />
+
+
+      {reversedArray.map((order, i) => (
           <Order
             key={order.id}
-            id={i}
-            data={props.orders[i]}
+            id={order.id}
+            data={reversedArray[i]}
+            deleteOrder={props.deleteOrder}
+            changeStatus={props.changeStatus}
           />
         ))}
 

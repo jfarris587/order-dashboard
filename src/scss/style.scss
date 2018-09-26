@@ -4,16 +4,15 @@
 @import "components/button.scss";
 @import "components/status.scss";
 
-
+@import "layout/login/login.scss";
 @import "layout/header/header.scss";
 @import "layout/header/detail.scss";
-
+@import "layout/panel/panel.scss";
 @import "layout/board/board.scss";
 @import "layout/board/order.scss";
 @import "layout/board/information.scss";
 @import "layout/board/entry.scss";
 
-@import "layout/panel/panel.scss";
 
 html{
   font-size: 10px;
@@ -35,7 +34,7 @@ body{
   background-repeat: no-repeat;
 }
 
-input{
+input, h1{
   font-family: 'Quicksand', sans-serif;
 }
 
@@ -44,6 +43,8 @@ input{
   min-height: 100vh;
   background: linear-gradient(35deg, $primary-blue, #212944);
   overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .container{
@@ -54,6 +55,6 @@ input{
 
 @include media-breakpoint-down(xs) {
   #root{
-    padding: 0 10px;
+    padding: 10px;
   }
 }

@@ -8,12 +8,12 @@ const Header = (props) =>{
     <div className="header container">
       <div className="title row">
         <div className="left">
-          <h1>BizBoard</h1>
+          <h1>Dashboard</h1>
           <p>Dashboard for tracking orders from clients...</p>
         </div>
 
         <div className="right">
-          <button className="button button--blue" onClick={props.addingOrders}>Log Out</button>
+          <button className="button button--blue" onClick={props.logout}>Log Out</button>
         </div>
 
       </div>
@@ -21,8 +21,10 @@ const Header = (props) =>{
         {props.details.map((detail, i) => (
           <Detail
             key={i}
-            id={i+1}
+            id={i}
             data={props.details[i]}
+            showOrders={props.showOrders}
+            show={props.show}
           />
         ))}
 

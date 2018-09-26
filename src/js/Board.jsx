@@ -9,20 +9,15 @@ const Board = (props) =>{
   return (
     <div className="board container">
       <div className="orders">
-        <Entry
-          addOrder={props.addOrder}
-          add={props.add}
-          expandEntry={props.expandEntry}
-        />
 
         <Labels />
 
-
-      {reversedArray.map((order, i) => (
+        {reversedArray.map((order, index) => (
           <Order
             key={order.id}
             id={order.id}
-            data={reversedArray[i]}
+            index={index}
+            data={reversedArray[index]}
             deleteOrder={props.deleteOrder}
             changeStatus={props.changeStatus}
           />

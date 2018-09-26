@@ -6,7 +6,7 @@ class Order extends Component {
     super(props);
 
     this.state = {
-      id: this.props.id,
+      index: this.props.index,
       expanded: false,
       toggler: true,
       name: this.props.data.name,
@@ -26,9 +26,14 @@ class Order extends Component {
 
   componentWillReceiveProps(nextProps) {
     var tempState = this.state;
-    tempState.id = this.props.id;
-    this.setState(tempState);
-    //console.log(this.props.id);
+    if(tempState.index !== nextProps.index){
+      tempState.index = nextProps.index;
+      this.setState(tempState);
+    }
+    if(tempState.status !== nextProps.status){
+      tempState.status = nextProps.data.status;
+      this.setState(tempState);
+    }
   }
 
   render() {
@@ -37,18 +42,16 @@ class Order extends Component {
       expanded = " expanded";
     }
 
-    //console.log(this.state.id);
-
     const statusArray = ["open", "pending", "closed"];
     var StatusList = [];
 
     for(let i = 0; i < 3; i++){
-      StatusList.push(<Status key={i} status={i} selected={this.state.status} changeStatus={this.props.changeStatus}/>);
+      StatusList.push(<Status key={i} status={i} index={this.state.index} selected={this.state.status} changeStatus={this.props.changeStatus}/>);
     }
 
     return (
       <div className="order-wrapper">
-        <div className="order"  onClick={() => this.expandOrder(this.state.id)}>
+        <div className="order"  onClick={() => this.expandOrder(this.state.index)}>
           <div className="order__detail toggle"><i className="fas fa-bars"></i></div>
 
           <div className="order__detail name"><p>{this.state.name}</p></div>
@@ -76,7 +79,7 @@ class Order extends Component {
                 Status:
                 {StatusList}
               </p>
-              <p className="delete" onClick={() => this.props.deleteOrder(this.state.id)}>delete</p>
+              <p className="delete" onClick={() => this.props.deleteOrder(this.state.index)}>delete</p>
             </div>
           </div>
         }

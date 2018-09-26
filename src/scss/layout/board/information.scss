@@ -35,13 +35,18 @@
 
         &:hover:not(.selected){
           opacity: 1;
-          font-weight: 900;
         }
 
         &:after{
           margin: auto 0 auto 5px;
           top: -1px;
           position: relative;
+        }
+
+        &:not(.selected):not(:hover){
+          &:after{
+            background: #eee;
+          }
         }
 
         &.selected{

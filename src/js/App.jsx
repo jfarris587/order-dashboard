@@ -3,6 +3,7 @@ import Settings from '../settings.js';
 import Header from './Header.jsx'
 import Panel from './Panel.jsx'
 import Board from './Board.jsx'
+import Login from './Login.jsx'
 
 
 class App extends Component {
@@ -11,7 +12,10 @@ class App extends Component {
 
     this.state = {
       details: [11, 5, 63, 102],
+      login: true,
+      store: Settings,
       orders: Settings,
+      show: 3,
       add:{
         mode: false
       },
@@ -20,6 +24,39 @@ class App extends Component {
         selected:[]
       }
     };
+  }
+
+  login = () =>{
+    var tempState = this.state;
+    tempState.login = true;
+    this.setState(tempState);
+  }
+
+  logout = () =>{
+    if (window.confirm("Are you sure you want to logout?")) {
+      var tempState = this.state;
+      tempState.login = false;
+      this.setState(tempState);
+    }
+  }
+
+  showOrders = (status) =>{
+    var tempState = this.state;
+    tempState.orders=[];
+
+    if(status === 3){
+      tempState.orders = tempState.store;
+    }
+    else{
+      for(let i = tempState.store.length - 1; i >= 0 ; i--){
+        if(tempState.store[i].status === status){
+            tempState.orders.push(tempState.store[i]);
+        }
+      }
+    }
+
+    tempState.show = status;
+    this.setState(tempState);
   }
 
   addingOrders = () =>{
@@ -51,7 +88,7 @@ class App extends Component {
       od: od,
       dd: dd,
       total: total,
-      status: "open"
+      status: 0
     }
 
     tempState.orders.push(orderObj);
@@ -68,45 +105,44 @@ class App extends Component {
   }
 
   deleteOrder = (i) =>{
-    var tempState = this.state;
-    tempState.orders.forEach(function(order, j){
-
-      if(order.id === i){
-        tempState.orders.splice(j, 1);
-      }
-    });
-
-    this.setState(tempState);
+    if (window.confirm("Are you sure you want to delete this order?")) {
+      var tempState = this.state;
+      tempState.orders.splice(tempState.orders.length - i - 1, 1);
+      this.setState(tempState);
+    }
   }
 
   changeStatus = (i, status) =>{
     var tempState = this.state;
-    tempState.orders.forEach(function(order, j){
-
-      if(order.id === i){
-        tempState.orders[j].status = status;
-      }
-    });
-
+    tempState.orders[tempState.orders.length - i - 1].status = status;
     this.setState(tempState);
   }
 
   render() {
-    if(this.state == null){
-      return null;
+    if(this.state.login === false){
+      return (
+        <Login
+          login={this.login}
+        />
+      );
     }
     else{
       return (
         <React.Fragment>
           <Header
             details={this.state.details}
+            showOrders={this.showOrders}
+            logout={this.logout}
+            show={this.state.show}
           />
+
           <Panel
             delete={this.state.delete}
             add={this.state.add}
             deletingOrders={this.deletingOrders}
             addingOrders={this.addingOrders}
           />
+
           <Board
             orders={this.state.orders}
             addOrder={this.addOrder}
@@ -118,7 +154,6 @@ class App extends Component {
         </React.Fragment>
       );
     }
-
   }
 }
 

@@ -9,9 +9,12 @@
   transition: background 150ms ease-in;
   position: relative;
 
+  &.selected{
+    background-size: 100% 5px;
+  }
+
   &:hover{
     background-size: 100% 5px;
-
   }
 
   h1{
@@ -35,52 +38,36 @@
     color: #5f6885;
   }
 
-  &-1{
+  &-0{
     background-image: $detail-1;
     margin: 0 5px 0 0;
   }
 
-  &-2{
+  &-1{
     margin: 0 5px 0 5px;
     background-image: $detail-2;
   }
 
-  &-3{
+  &-2{
     margin: 0 5px 0 5px;
     background-image: $detail-3;
   }
 
-  &-4{
+  &-3{
     margin: 0 0 0 5px;
     background-image: $detail-4;
   }
-
-/*
-  &__wrapper{
-    &:first-child{
-      .detail{
-        margin: 0 5px 0 0;
-      }
-    }
-
-    &:last-child{
-      .detail{
-        margin: 0 0 5px 0;
-      }
-    }
-  }
-  */
 }
 
 
 @include media-breakpoint-down(md) {
   .detail{
 
-    &-1, &-3{
+    &-0, &-2{
       margin: 0 5px 10px 0;
     }
 
-    &-2, &-4{
+    &-1, &-3{
       margin: 0 0 10px 5px;
     }
   }

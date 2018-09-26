@@ -9,7 +9,8 @@
   justify-content: flex-start;
   align-items: flex-start;
   max-height: 0;
-  transition: all 700ms ease-in-out;
+  transition: all 400ms ease-in-out;
+  margin: 0px 0 0px 0px;
   //transition: max-height 700ms ease-in-out;
 
   button{
@@ -94,6 +95,7 @@
   &.expanded{
     max-height: 600px;
     border-top: 25px solid rgba(255, 255, 255, 0.15);
+    margin: 20px 0 10px 0px;
   }
 }
 

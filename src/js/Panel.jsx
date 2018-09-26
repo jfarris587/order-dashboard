@@ -1,4 +1,5 @@
 import React from "react";
+import Entry from "./components/Entry.jsx";
 
 const Panel = (props) =>{
   var deleting = "";
@@ -19,6 +20,11 @@ const Panel = (props) =>{
         <button className={"button delete"+deleting} onClick={props.deletingOrders}>Delete Order</button>
         <button className={"button button--blue"+adding} onClick={props.addingOrders}>Add Order</button>
       </div>
+      <Entry
+        addOrder={props.addOrder}
+        add={props.add}
+        expandEntry={props.expandEntry}
+      />
     </div>
   );
 }

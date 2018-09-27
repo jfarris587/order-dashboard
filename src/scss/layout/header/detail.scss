@@ -37,26 +37,26 @@
     font-size: 5.75rem;
     color: #5f6885;
   }
-
   &-0{
+    margin: 0 0 0 5px;
+    background-image: $detail-4;
+  }
+  &-1{
     background-image: $detail-1;
     margin: 0 5px 0 0;
   }
 
-  &-1{
+  &-2{
     margin: 0 5px 0 5px;
     background-image: $detail-2;
   }
 
-  &-2{
+  &-3{
     margin: 0 5px 0 5px;
     background-image: $detail-3;
   }
 
-  &-3{
-    margin: 0 0 0 5px;
-    background-image: $detail-4;
-  }
+
 }
 
 

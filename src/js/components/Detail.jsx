@@ -8,18 +8,21 @@ const Detail = (props) => {
   if(props.show === props.id){
         selected = " selected";
   }
-
-  if(props.id === 1){
+  if(props.id === 0){
+    classIcon = "users";
+    type = "total orders";
+  }
+  else if(props.id === 1){
+    classIcon = "box-open";
+    type = "open orders";
+  }
+  else if(props.id === 2){
     classIcon = "credit-card";
     type = "pending orders";
   }
-  else if(props.id === 1){
+  else if(props.id === 3){
     classIcon = "shopping-cart";
     type = "closed orders";
-  }
-  else if(props.id === 3){
-    classIcon = "users";
-    type = "total customers";
   }
 
   return (

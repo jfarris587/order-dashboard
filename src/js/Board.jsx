@@ -21,13 +21,12 @@ class Board extends Component {
 
   componentWillReceiveProps(nextProps) {
     var tempState = this.state;
-    tempState.orders = this.props.orders.slice().reverse();
+    tempState.orders = nextProps.orders.slice().reverse();
     tempState.totalPages = Math.ceil(nextProps.orders.length / this.state.perPage) - 1;
     if(tempState.page > tempState.totalPages){
       tempState.page -= 1;
     }
     this.setState(tempState);
-
   }
 
   nextPage = () => {

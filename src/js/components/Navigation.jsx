@@ -4,8 +4,6 @@ const Navigation = (props) =>{
   var displayNext = "";
   var displayPrev = "";
 
-  console.log(props.totalPages, props.page);
-
   if(props.totalPages <= props.page){
     displayNext = " hide";
   }

@@ -13,9 +13,9 @@ class App extends Component {
     this.state = {
       details: [0, 0, 0, 0],
       login: true,
-      store: Settings,
-      orders: Settings,
-      show: 3,
+      store: Settings.slice(),
+      orders: Settings.slice(),
+      show: 0,
       page: 0,
       add:{
         mode: false
@@ -25,27 +25,29 @@ class App extends Component {
         selected:[]
       }
     };
-
-    console.log(this.state.orders);
-
   }
 
   componentWillMount(){
+    this.calculateTotals();
+  }
+
+  calculateTotals = () =>{
     var tempState = this.state;
     var status;
+    tempState.details = [0,0,0,0];
 
     tempState.store.forEach(function(order){
       status = order.status;
-      tempState.details[3] += 1;
+      tempState.details[0] += 1;
 
       if(status === 0){
-        tempState.details[0] += 1;
-      }
-      else if(status === 1){
         tempState.details[1] += 1;
       }
-      else{
+      else if(status === 1){
         tempState.details[2] += 1;
+      }
+      else{
+        tempState.details[3] += 1;
       }
     });
     this.setState(tempState);
@@ -69,12 +71,12 @@ class App extends Component {
     var tempState = this.state;
     tempState.orders=[];
 
-    if(status === 3){
-      tempState.orders = tempState.store;
+    if(status === 0){
+      tempState.orders = tempState.store.slice();
     }
     else{
       for(let i = tempState.store.length - 1; i >= 0 ; i--){
-        if(tempState.store[i].status === status){
+        if(tempState.store[i].status === status-1){
             tempState.orders.push(tempState.store[i]);
         }
       }
@@ -119,6 +121,7 @@ class App extends Component {
     tempState.orders.push(orderObj);
     tempState.add.mode = !tempState.add.mode;
     this.setState(tempState);
+    this.calculateTotals();
   }
 
   deletingOrders = () =>{
@@ -132,14 +135,15 @@ class App extends Component {
   deleteOrder = (i) =>{
     if (window.confirm("Are you sure you want to delete this order?")) {
       var tempState = this.state;
-      tempState.orders.forEach(function(order, index){
+      tempState.store.forEach(function(order, index){
 
         if(order.id === i){
-          tempState.orders.splice(index, 1);
+          tempState.store.splice(index, 1);
         }
       });
-
+      tempState.orders = tempState.store.slice();
       this.setState(tempState);
+      this.calculateTotals();
     }
   }
 
@@ -172,6 +176,7 @@ class App extends Component {
             add={this.state.add}
             deletingOrders={this.deletingOrders}
             addingOrders={this.addingOrders}
+            addOrder={this.addOrder}
           />
 
           <Board
@@ -183,6 +188,7 @@ class App extends Component {
             changeStatus={this.changeStatus}
             page={this.state.page}
           />
+
         </React.Fragment>
       );
     }

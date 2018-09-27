@@ -1,10 +1,11 @@
 .board{
   width: 100%;
-  min-height: 4 * (50px);
-  margin-bottom: 50px;
+  min-height: 5 * (50px) + 30px;
   border-radius: 3px;
   overflow: hidden;
   background: $secondary-blue;
+  display: flex;
+  flex-direction: column;
 
   .orders{
     position: relative;

@@ -7,6 +7,7 @@ class Order extends Component {
 
     this.state = {
       index: this.props.index,
+      id: this.props.id,
       expanded: false,
       toggler: true,
       name: this.props.data.name,
@@ -79,7 +80,7 @@ class Order extends Component {
                 Status:
                 {StatusList}
               </p>
-              <p className="delete" onClick={() => this.props.deleteOrder(this.state.index)}>delete</p>
+              <p className="delete" onClick={() => this.props.deleteOrder(this.state.id)}>delete</p>
             </div>
           </div>
         }

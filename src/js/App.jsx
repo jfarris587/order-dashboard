@@ -11,11 +11,12 @@ class App extends Component {
     super(props);
 
     this.state = {
-      details: [11, 5, 63, 102],
+      details: [0, 0, 0, 0],
       login: true,
       store: Settings,
       orders: Settings,
       show: 3,
+      page: 0,
       add:{
         mode: false
       },
@@ -24,6 +25,30 @@ class App extends Component {
         selected:[]
       }
     };
+
+    console.log(this.state.orders);
+
+  }
+
+  componentWillMount(){
+    var tempState = this.state;
+    var status;
+
+    tempState.store.forEach(function(order){
+      status = order.status;
+      tempState.details[3] += 1;
+
+      if(status === 0){
+        tempState.details[0] += 1;
+      }
+      else if(status === 1){
+        tempState.details[1] += 1;
+      }
+      else{
+        tempState.details[2] += 1;
+      }
+    });
+    this.setState(tempState);
   }
 
   login = () =>{
@@ -107,7 +132,13 @@ class App extends Component {
   deleteOrder = (i) =>{
     if (window.confirm("Are you sure you want to delete this order?")) {
       var tempState = this.state;
-      tempState.orders.splice(tempState.orders.length - i - 1, 1);
+      tempState.orders.forEach(function(order, index){
+
+        if(order.id === i){
+          tempState.orders.splice(index, 1);
+        }
+      });
+
       this.setState(tempState);
     }
   }
@@ -150,6 +181,7 @@ class App extends Component {
             addingOrders={this.addingOrders}
             deleteOrder={this.deleteOrder}
             changeStatus={this.changeStatus}
+            page={this.state.page}
           />
         </React.Fragment>
       );

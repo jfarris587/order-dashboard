@@ -1,0 +1,23 @@
+.navigation{
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+
+  background:rgba(#fff,.15);
+  color: $primary-blue;
+  margin-top: auto;
+
+  i{
+    padding: 0 35px;
+    opacity: .5;
+    font-size: 2.5rem;
+
+    &.hide{
+      visibility: hidden;
+    }
+
+    &:hover{
+      opacity: 1;
+    }
+  }
+}

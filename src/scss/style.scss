@@ -12,6 +12,7 @@
 @import "layout/board/order.scss";
 @import "layout/board/information.scss";
 @import "layout/board/entry.scss";
+@import "layout/board/navigation.scss";
 
 
 html{
@@ -39,7 +40,7 @@ input, h1{
 }
 
 #root{
-  padding: 0 30px;
+  padding: 0 30px 30px 30px;
   min-height: 100vh;
   background: linear-gradient(35deg, $primary-blue, #212944);
   overflow: auto;

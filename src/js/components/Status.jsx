@@ -16,7 +16,7 @@ const Status = (props) =>{
 
   var classes = `symbol ${status} ${selected}`;
   return (
-      <span className={classes} onClick={() => props.changeStatus(props.index, props.status)}> {status}</span>
+      <span className={classes} onClick={() => props.changeStatus(props.id, props.status)}> {status}</span>
     );
 }
 

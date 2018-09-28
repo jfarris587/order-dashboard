@@ -27,6 +27,7 @@ class Order extends Component {
 
   componentWillReceiveProps(nextProps) {
     var tempState = this.state;
+    tempState.expanded = false;
     if(tempState.index !== nextProps.index){
       tempState.index = nextProps.index;
       this.setState(tempState);
@@ -47,7 +48,7 @@ class Order extends Component {
     var StatusList = [];
 
     for(let i = 0; i < 3; i++){
-      StatusList.push(<Status key={i} status={i} index={this.state.index} selected={this.state.status} changeStatus={this.props.changeStatus}/>);
+      StatusList.push(<Status key={i} status={i} id={this.state.id} selected={this.state.status} changeStatus={this.props.changeStatus}/>);
     }
 
     return (

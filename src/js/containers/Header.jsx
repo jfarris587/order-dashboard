@@ -1,5 +1,5 @@
 import React from "react";
-import Detail from './components/Detail.jsx'
+import Detail from '../components/Detail.jsx'
 
 const Header = (props) =>{
 

@@ -1,14 +1,25 @@
 .board{
   width: 100%;
-  //min-height: 4 * (50px) + 30px;
+  min-height: 9 * (50px) + 38px;
   border-radius: 3px;
   overflow: hidden;
   background: $secondary-blue;
   display: flex;
   flex-direction: column;
 
+
+}
+
+
+.orders-container{
+  display: flex;
+
   .orders{
     position: relative;
     z-index: 0;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 400ms ease-out;
   }
 }

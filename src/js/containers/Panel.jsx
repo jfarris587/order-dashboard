@@ -1,5 +1,5 @@
 import React from "react";
-import Entry from "./components/Entry.jsx";
+import Entry from "../components/Entry.jsx";
 
 const Panel = (props) =>{
   var deleting = "";
@@ -24,6 +24,7 @@ const Panel = (props) =>{
         addOrder={props.addOrder}
         add={props.add}
         expandEntry={props.expandEntry}
+        addingOrders={props.addingOrders}
       />
     </div>
   );

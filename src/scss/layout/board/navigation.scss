@@ -2,9 +2,11 @@
   height: 30px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
-  background:rgba(#fff,.15);
+  background:rgba(#fff,.40);
   color: $primary-blue;
+  border-top: 1px solid $secondary-blue;
   margin-top: auto;
 
   i{

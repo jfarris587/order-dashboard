@@ -12,7 +12,7 @@ const Navigation = (props) =>{
   }
 
   return (
-    <div className="order navigation">
+    <div className="navigation">
         <i className={`fas fa-angle-left ${displayPrev}`} onClick={props.prevPage}></i>
         <i className={`fas fa-angle-right ${displayNext}`} onClick={props.nextPage}></i>
     </div>

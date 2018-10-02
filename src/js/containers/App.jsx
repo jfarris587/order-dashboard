@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Settings from '../../settings.js';
 import Header from './Header.jsx'
 import Panel from './Panel.jsx'
@@ -146,6 +147,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props);
     if(this.state.login === false){
       return (
         <Login
@@ -188,4 +190,22 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    login: state.login
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    destroyTodo: () =>
+      dispatch({
+        type: 'DESTROY_TODO'
+      })
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

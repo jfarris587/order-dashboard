@@ -1,18 +1,26 @@
 import { createStore, combineReducers } from 'redux';
-import
+import loginReducer from '../reducers/login';
+import displayReducer from '../reducers/display';
+import ordersReducer from '../reducers/orders';
 
 const storeLayout = {
-
+  login: true,
+  orders: [null],
+  display: {
+    show: 0,
+    page: 0,
+    mode: "default"
+  }
 }
 
-const store = createStore(
-  combineReducers({
-    orders: ordersReducer,
-    details: detailsReducer,
-    login: loginReducer,
-    add: addReducer,
-    delete: deleteReducer,
-    show: showReducer,
-    page: pageReducer
-  })
-);
+export default () => {
+  const store = createStore(
+    combineReducers({
+      login: loginReducer,
+      orders: ordersReducer,
+      display: displayReducer
+    })
+  );
+
+  return store;
+}

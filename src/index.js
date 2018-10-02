@@ -13,8 +13,6 @@ const unsubscribe = store.subscribe(()=>{
   console.log("STATE CHANGED:", store.getState());
 });
 
-store.dispatch(loginApp());
-
 ReactDOM.render(
   <Provider store={store}>
     <App />

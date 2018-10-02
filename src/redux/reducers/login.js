@@ -1,4 +1,4 @@
-const loginDefaultState = true;
+const loginDefaultState = false;
 
 export default (state = loginDefaultState, action) => {
   switch (action.type) {

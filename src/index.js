@@ -1,24 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import rootReducer from './reducers'
+//import initialStore from './reducers'
 import App from './js/containers/App.jsx';
 import './scss/style.scss';
-
-const store = createStore(rootReducer);
-
-store.subscribe(()=>{
-  console.log("STATE CHANGED:", store.getState());
-});
-
-
+import { createStore, combineReducers } from 'redux';
+import Settings from './settings.js';
 
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <App />,
   document.getElementById('root')
 );

@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { changeMode } from '../../redux/actions/display';
+import { addOrder } from '../../redux/actions/orders';
 
 const Entry = (props) =>{
   var expanded = "";
@@ -19,12 +22,12 @@ const Entry = (props) =>{
       <div className="entry__detail total"><p>Total:</p><input type="number" required="required" placeholder="19.99"></input></div>
 
       <div className="entry__buttons">
-        <button className="button button--blue" type="button" onClick={props.addingOrders}>Exit</button>
+        <button className="button button--blue" type="button" onClick={() => props.dispatch(changeMode("default"))}>Exit</button>
 
-        <button className="button button--pink" type="button" onClick={props.addOrder}>Submit</button>
+        <button className="button button--pink" type="button" onClick={() => props.dispatch(addOrder())}>Submit</button>
       </div>
     </form>
   );
 }
 
-export default Entry;
+export default connect()(Entry);

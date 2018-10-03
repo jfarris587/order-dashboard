@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { loginApp } from '../../redux/actions/app';
 
 const Login = (props) =>{
-  console.log(props);
-
   return (
     <div className="login container">
       <form>
@@ -16,7 +14,5 @@ const Login = (props) =>{
     </div>
   );
 }
-
-
 
 export default connect()(Login);

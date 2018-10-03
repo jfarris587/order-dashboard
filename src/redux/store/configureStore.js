@@ -3,6 +3,7 @@ import loginReducer from '../reducers/login';
 import displayReducer from '../reducers/display';
 import ordersReducer from '../reducers/orders';
 
+/*
 const storeLayout = {
   login: true,
   orders: [null],
@@ -12,6 +13,7 @@ const storeLayout = {
     mode: "default"
   }
 }
+*/
 
 export default () => {
   const store = createStore(

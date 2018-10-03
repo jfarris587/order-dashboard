@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Order from '../components/Order.jsx'
 import Labels from '../components/Labels.jsx'
 import Navigation from '../components/Navigation.jsx'
@@ -11,33 +12,20 @@ class Board extends Component {
     this.state = {
       page: 0,
       totalPages: 0,
-      perPage: 8,
-      show: 0,
-      orders: []
+      orders: this.filterOrders(this.props.orders, 0)
     };
   }
 
   componentWillMount(){
     var tempState = this.state;
-    var orders = this.splitOrders(this.props.orders.slice().reverse(), this.state.perPage);
-
-    tempState = {
-      page: 0,
-      totalPages: orders.length - 1,
-      perPage: this.state.perPage,
-      show: this.props.show,
-      orders: orders
-    };
-
+    tempState.totalPages = tempState.orders.length - 1;
     this.setState(tempState);
   }
 
   componentWillReceiveProps(nextProps) {
     var tempState = this.state;
-    var tempOrders = this.filterOrders(nextProps.orders, nextProps.show);
-    tempState.orders = this.splitOrders(tempOrders.slice().reverse(), this.state.perPage);
+    tempState.orders = this.filterOrders(nextProps.orders, nextProps.display.show);
     tempState.totalPages = tempState.orders.length - 1;
-    tempState.show = nextProps.show;
 
     if(tempState.page > tempState.totalPages){
       tempState.page -= 1;
@@ -55,11 +43,19 @@ class Board extends Component {
             tempOrders.push(orders[i]);
         }
       }
-      return tempOrders;
+      return this.splitOrders(tempOrders.slice(), 8);
     }
     else{
-      return orders;
+      return this.splitOrders(orders.slice().reverse(), 8);
     }
+  }
+
+  splitOrders = (orders, size) => {
+    var array = [];
+    for(var i = 0; i < orders.length; i += size) {
+      array.push(orders.slice(i, i+size));
+    }
+    return array;
   }
 
   nextPage = () => {
@@ -76,14 +72,6 @@ class Board extends Component {
       tempState.page -= 1;
       this.setState(tempState);
     }
-  }
-
-  splitOrders = (orders, size) => {
-    var array = [];
-    for(var i = 0; i < orders.length; i += size) {
-      array.push(orders.slice(i, i+size));
-    }
-    return array;
   }
 
   render(){
@@ -103,8 +91,6 @@ class Board extends Component {
                   id={order.id}
                   index={index}
                   data={order}
-                  deleteOrder={this.props.deleteOrder}
-                  changeStatus={this.props.changeStatus}
                 />
               ))}
             </div>
@@ -122,4 +108,13 @@ class Board extends Component {
   }
 }
 
-export default Board;
+const mapStateToProps = (state) => {
+  return {
+    orders: state.orders,
+    display: state.display
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Board);

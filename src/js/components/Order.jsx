@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { deleteOrder } from '../../redux/actions/orders';
 import Status from './Status.jsx';
 
 class Order extends Component {
@@ -6,16 +8,7 @@ class Order extends Component {
     super(props);
 
     this.state = {
-      index: this.props.index,
-      id: this.props.id,
-      expanded: false,
-      toggler: true,
-      name: this.props.data.name,
-      description: this.props.data.description,
-      od: this.props.data.od,
-      dd: this.props.data.od,
-      total: this.props.data.total,
-      status: this.props.data.status,
+      expanded: false
     };
   }
 
@@ -23,19 +16,6 @@ class Order extends Component {
     var tempState = this.state;
     tempState.expanded = !tempState.expanded;
     this.setState(tempState);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    var tempState = this.state;
-    tempState.expanded = false;
-    if(tempState.index !== nextProps.index){
-      tempState.index = nextProps.index;
-      this.setState(tempState);
-    }
-    if(tempState.status !== nextProps.status){
-      tempState.status = nextProps.data.status;
-      this.setState(tempState);
-    }
   }
 
   render() {
@@ -48,40 +28,40 @@ class Order extends Component {
     var StatusList = [];
 
     for(let i = 0; i < 3; i++){
-      StatusList.push(<Status key={i} status={i} id={this.state.id} selected={this.state.status} changeStatus={this.props.changeStatus}/>);
+      StatusList.push(<Status key={i} status={i} id={this.props.data.id} selected={this.props.data.status} changeStatus={this.props.changeStatus}/>);
     }
 
     return (
       <div className="order-wrapper">
-        <div className="order"  onClick={() => this.expandOrder(this.state.index)}>
+        <div className="order"  onClick={() => this.expandOrder(this.props.data.index)}>
           <div className="order__detail toggle"><i className="fas fa-bars"></i></div>
 
-          <div className="order__detail name"><p>{this.state.name}</p></div>
+          <div className="order__detail name"><p>{this.props.data.name}</p></div>
 
-          <div className="order__detail description"><p>{this.state.description}</p></div>
+          <div className="order__detail description"><p>{this.props.data.description}</p></div>
 
-          <div className="order__detail od"><p>{this.state.od}</p></div>
+          <div className="order__detail od"><p>{this.props.data.od}</p></div>
 
-          <div className="order__detail dd"><p>{this.state.dd}</p></div>
+          <div className="order__detail dd"><p>{this.props.data.dd}</p></div>
 
-          <div className="order__detail total"><p>$ {this.state.total}</p></div>
+          <div className="order__detail total"><p>$ {this.props.data.total}</p></div>
 
-          <div className={"order__detail symbol "+statusArray[this.state.status]}><p>{statusArray[this.state.status]}</p></div>
+          <div className={"order__detail symbol "+statusArray[this.props.data.status]}><p>{statusArray[this.props.data.status]}</p></div>
         </div>
 
-        {this.state.name &&
+        {this.props.data.name &&
           <div className={"information" + expanded}>
             <div className="information__info">
-              <p>Client: <span>{this.state.name}</span></p>
-              <p>Description: <span> {this.state.description}</span></p>
-              <p>Order Date: <span> {this.state.od}</span></p>
-              <p>Deliver Date: <span> {this.state.dd}</span></p>
-              <p>Total: <span>${this.state.total}</span></p>
+              <p>Client: <span>{this.props.data.name}</span></p>
+              <p>Description: <span> {this.props.data.description}</span></p>
+              <p>Order Date: <span> {this.props.data.od}</span></p>
+              <p>Deliver Date: <span> {this.props.data.dd}</span></p>
+              <p>Total: <span>${this.props.data.total}</span></p>
               <p>
                 Status:
                 {StatusList}
               </p>
-              <p className="delete" onClick={() => this.props.deleteOrder(this.state.id)}>delete</p>
+              <p className="delete" onClick={() => this.props.dispatch(deleteOrder(this.props.data.id))}>delete</p>
             </div>
           </div>
         }
@@ -90,4 +70,12 @@ class Order extends Component {
   }
 }
 
-export default Order;
+const mapStateToProps = (state) => {
+  return {
+    orders: state.orders
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Order);

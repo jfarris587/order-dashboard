@@ -17,7 +17,7 @@ const Labels = (props) =>{
 
       <div className="labels__detail symbol"><p>status</p></div>
     </div>
-    );
+  );
 }
 
 export default Labels;

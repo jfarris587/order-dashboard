@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { changeOrderStatus } from '../../redux/actions/orders';
 
 const Status = (props) =>{
   var status = "open";
@@ -16,8 +18,8 @@ const Status = (props) =>{
 
   var classes = `symbol ${status} ${selected}`;
   return (
-      <span className={classes} onClick={() => props.changeStatus(props.id, props.status)}> {status}</span>
-    );
+    <span className={classes} onClick={() => props.dispatch(changeOrderStatus(props.id, props.status))}> {status}</span>
+  );
 }
 
-export default Status;
+export default connect()(Status);

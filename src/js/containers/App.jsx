@@ -147,7 +147,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.login);
     if(this.props.login === false){
       return (
         <Login />
@@ -156,16 +155,10 @@ class App extends Component {
     else{
       return (
         <React.Fragment>
-          <h1>HELLO WORLD</h1>
+          <Header />
 
-        /*
-        <Panel
-            delete={this.state.delete}
-            add={this.state.add}
-            deletingOrders={this.deletingOrders}
-            addingOrders={this.addingOrders}
-            addOrder={this.addOrder}
-          />
+
+        <Panel  />
 
           <Board
             orders={this.state.orders}
@@ -177,7 +170,7 @@ class App extends Component {
             page={this.state.page}
             show={this.state.show}
           />
-          */
+          
 
         </React.Fragment>
       );

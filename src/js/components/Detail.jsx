@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { showOrderType } from '../../redux/actions/display';
 
 const Detail = (props) => {
   var classIcon = "box-open";
@@ -27,7 +29,7 @@ const Detail = (props) => {
 
   return (
     <div className="detail__wrapper col-lg-3 col-md-6 col-sm-6">
-      <div className={"detail detail-"+props.id+selected} onClick={() => props.showOrders(props.id)}>
+      <div className={"detail detail-"+props.id+selected} onClick={() => props.dispatch(showOrderType(props.id))}>
         <h1>{props.data}<span>{type}</span></h1>
         <i className={"fas fa-" + classIcon}></i>
       </div>
@@ -35,4 +37,12 @@ const Detail = (props) => {
   );
 }
 
-export default Detail;
+const mapStateToProps = (state) => {
+  return {
+    show: state.display.show
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Detail);

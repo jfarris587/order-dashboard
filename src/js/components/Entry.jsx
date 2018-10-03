@@ -2,7 +2,7 @@ import React from "react";
 
 const Entry = (props) =>{
   var expanded = "";
-  if(props.add.mode === true){
+  if(props.mode === "add"){
     expanded = " expanded";
   }
 

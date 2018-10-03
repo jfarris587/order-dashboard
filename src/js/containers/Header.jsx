@@ -1,8 +1,15 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { loginApp } from '../../redux/actions/app';
 import Detail from '../components/Detail.jsx'
 
 const Header = (props) =>{
+  const details = [0,0,0,0];
 
+  props.orders.forEach((order) => {
+    details[order.status + 1] += 1;
+    details[0] += 1;
+  });
 
   return (
     <div className="header container">
@@ -13,18 +20,16 @@ const Header = (props) =>{
         </div>
 
         <div className="right">
-          <button className="button button--blue" onClick={props.logout}>Log Out</button>
+          <button className="button button--blue" onClick={() => props.dispatch(loginApp())}>Log Out</button>
         </div>
 
       </div>
       <div className="details row">
-        {props.details.map((detail, i) => (
+        {details.map((detail, i) => (
           <Detail
             key={i}
             id={i}
-            data={props.details[i]}
-            showOrders={props.showOrders}
-            show={props.show}
+            data={details[i]}
           />
         ))}
 
@@ -33,4 +38,12 @@ const Header = (props) =>{
   );
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    orders: state.orders
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Header);

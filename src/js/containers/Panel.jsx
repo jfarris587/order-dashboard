@@ -1,15 +1,17 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { changeMode } from '../../redux/actions/display';
 import Entry from "../components/Entry.jsx";
 
 const Panel = (props) =>{
   var deleting = "";
   var adding = "";
 
-  if(props.delete.mode === true){
+  if(props.display.mode === "delete"){
     deleting = " deleting";
   }
 
-  if(props.add.mode === true){
+  if(props.display.mode === "add"){
     adding = " adding";
   }
 
@@ -17,17 +19,22 @@ const Panel = (props) =>{
     <div className="panel container">
       <div className="controls">
         <p>Use the board to add orders and track their progress.</p>
-        <button className={"button delete"+deleting} onClick={props.deletingOrders}>Delete Order</button>
-        <button className={"button button--blue"+adding} onClick={props.addingOrders}>Add Order</button>
+        <button className={"button delete"+deleting} onClick={() => props.dispatch(changeMode("delete"))}>Delete Order</button>
+        <button className={"button button--blue"+adding} onClick={() => props.dispatch(changeMode("add"))}>Add Order</button>
       </div>
       <Entry
-        addOrder={props.addOrder}
-        add={props.add}
-        expandEntry={props.expandEntry}
-        addingOrders={props.addingOrders}
+        mode = {props.display.mode}
       />
     </div>
   );
 }
 
-export default Panel;
+const mapStateToProps = (state) => {
+  return {
+    display: state.display
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Panel);

@@ -1,32 +1,33 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { configure } from 'enzyme';
 import { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { Board } from '../js/containers/Board';
 import Settings from '../redux/settings.js';
-
+import { Board } from '../js/containers/Board';
 configure({ adapter: new Adapter() });
+
+const orders = Settings;
+const wrapper = shallow(<Board orders={orders}/>);
+const instance = wrapper.instance();
+
+describe('Board Component', () => {
+  test('render', () => {
+    expect(wrapper.exists()).toBe(true)
+  })
+});
 
 describe('filterOrders', () => {
   it('filters through the orders and to display specific types only', () => {
     var data;
-    const orders = Settings;
-    const wrapper = shallow(<Board orders={orders}/>);
-    const instance = wrapper.instance();
-
     //page total for all-orders
     data = instance.filterOrders(orders, 0).length;
     expect(data).toBe(2);
-
     //order total on first page for all-orders
     data = instance.filterOrders(orders, 0)[0].length;
     expect(data).toBe(8);
-
     //page total for closed-orders
     data = instance.filterOrders(orders, 3).length;
     expect(data).toBe(1);
-
     //order total on first page for closed-orders
     data = instance.filterOrders(orders, 3)[0].length;
     expect(data).toBe(7);
@@ -36,10 +37,6 @@ describe('filterOrders', () => {
 describe('splitOrders', () => {
   it('splits orders into array of pages', () => {
     var data;
-    const orders = Settings;
-    const wrapper = shallow(<Board orders={orders}/>);
-    const instance = wrapper.instance();
-
     //splitting orders into pages array
     data = instance.splitOrders(orders, 5).length;
     expect(data).toBe(3);
@@ -52,10 +49,7 @@ describe('splitOrders', () => {
 
 describe('nextPage/prevPage', () => {
   it('goes to the next/prev page of orders', () => {
-    const orders = Settings;
-    const wrapper = shallow(<Board orders={orders}/>);
-    const instance = wrapper.instance();
-
+    expect(wrapper.state('page')).toBe(0);
     //on nextPage click
     instance.nextPage();
     expect(wrapper.state('page')).toBe(1);

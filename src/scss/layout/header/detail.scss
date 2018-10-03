@@ -40,20 +40,44 @@
   &-0{
     margin: 0 5px 0 0;
     background-image: $detail-4;
+
+    &.selected{
+      i{
+        color: #33c3bf;
+      }
+    }
   }
   &-1{
     background-image: $detail-1;
     margin: 0 5px 0 5px;
+
+    &.selected{
+      i{
+        color: $order-open;
+      }
+    }
   }
 
   &-2{
     margin: 0 5px 0 5px;
     background-image: $detail-2;
+
+    &.selected{
+      i{
+        color: $order-pending;
+      }
+    }
   }
 
   &-3{
     margin: 0 0 0 5px;
     background-image: $detail-3;
+
+    &.selected{
+      i{
+        color: $order-closed;
+      }
+    }
   }
 
 

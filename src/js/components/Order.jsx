@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { deleteOrder } from '../../redux/actions/orders';
 import Status from './Status.jsx';
 
-class Order extends Component {
+export class Order extends Component {
   constructor(props){
     super(props);
 

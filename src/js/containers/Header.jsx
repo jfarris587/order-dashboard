@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { loginApp } from '../../redux/actions/app';
 import Detail from '../components/Detail.jsx'
 
-const Header = (props) =>{
+export const Header = (props) =>{
   const details = [0,0,0,0];
 
   props.orders.forEach((order) => {

@@ -5,7 +5,7 @@ import Panel from './Panel.jsx'
 import Board from './Board.jsx'
 import Login from '../components/Login.jsx'
 
-const App = (props) =>{
+export const App = (props) =>{
   if(props.login === false){
     return (
       <Login />

@@ -5,7 +5,7 @@ import Labels from '../components/Labels.jsx'
 import Navigation from '../components/Navigation.jsx'
 
 
-class Board extends Component {
+export class Board extends Component {
   constructor(props){
     super(props);
 

@@ -2,6 +2,7 @@
   "name": "order-dashboard",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:9000/",
   "homepage": "https://jfarris587.github.io/order-dashboard/",
   "dependencies": {
     "autoprefixer": "7.1.6",
@@ -53,7 +54,8 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "server": "cd server && nodemon app.js"
   },
   "devDependencies": {
     "enzyme": "^3.6.0",

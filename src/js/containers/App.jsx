@@ -5,24 +5,18 @@ import Panel from './Panel.jsx'
 import Board from './Board.jsx'
 import Login from '../components/Login.jsx'
 import { setOrders } from '../../redux/actions/orders';
+import API from '../../api/API';
 
 export class App extends Component {
   componentWillMount() {
-    this.callApi()
+    var api = new API();
+    api.FETCH('/api/orders')
     .then(res =>
       this.props.dispatch(setOrders(res))
     )
     .catch(err => console.log(err));
   }
 
-  callApi = async () => {
-    const response = await fetch('/api/orders');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-  };
 
   render(){
     if(this.props.login === false){

@@ -1,4 +1,4 @@
-//import Settings from '../../redux/settings.js';
+import API from '../../api/API';
 
 const ordersDefaultState = {};
 
@@ -31,11 +31,11 @@ export default (state = ordersDefaultState, action) => {
       var id = tempState.length + 1;
 
       if(name === "" || od === "" || dd === "" || description === ""|| total === ""){
-        return;
+        //return tempState;
       }
 
       var orderObj = {
-        id: id,
+        _id: id,
         name: name,
         description: description,
         od: od,
@@ -45,7 +45,16 @@ export default (state = ordersDefaultState, action) => {
       }
 
       tempState.push(orderObj);
-      return tempState;
+
+      var api = new API();
+      api.ADD_ORDER()
+      .then(res =>
+        {
+          console.log("WORKING");
+          return tempState;
+        }
+      )
+      .catch(err => console.log(err));
 
     case "DELETE_ORDER":
       tempState.forEach(function(order, i){

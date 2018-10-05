@@ -28,7 +28,7 @@ export class Order extends Component {
     var StatusList = [];
 
     for(let i = 0; i < 3; i++){
-      StatusList.push(<Status key={i} status={i} id={this.props.data.id} selected={this.props.data.status} changeStatus={this.props.changeStatus}/>);
+      StatusList.push(<Status key={i} status={i} id={this.props.id} selected={this.props.data.status} changeStatus={this.props.changeStatus}/>);
     }
 
     return (
@@ -61,7 +61,7 @@ export class Order extends Component {
                 Status:
                 {StatusList}
               </p>
-              <p className="delete" onClick={() => this.props.dispatch(deleteOrder(this.props.data.id))}>delete</p>
+              <p className="delete" onClick={() => this.props.dispatch(deleteOrder(this.props.id))}>delete</p>
             </div>
           </div>
         }

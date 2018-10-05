@@ -76,7 +76,6 @@ export class Board extends Component {
 
   render(){
     var translated = this.state.page * (-100);
-
     return (
 
       <div className="board container">
@@ -84,11 +83,11 @@ export class Board extends Component {
 
         <div className="orders-container">
           {this.state.orders.map((orderSection, i) => (
-            <div key= {i} className="orders" style={{transform: "translateX("+translated+"%)"}}>
+            <div key={i} className="orders" style={{transform: "translateX("+translated+"%)"}}>
               {orderSection.map((order, index) => (
                 <Order
-                  key={order.id}
-                  id={order.id}
+                  key={order._id}
+                  id={order._id}
                   index={index}
                   data={order}
                 />

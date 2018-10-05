@@ -1,7 +1,7 @@
 export default
 [
   {
-    id:1,
+    _id:1,
     name: "David Johnson",
     description: "short Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     od: "9-1-2018",
@@ -10,7 +10,7 @@ export default
     status: 2
   },
   {
-    id:2,
+    _id:2,
     name: "Ezekiel Elliot",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     od: "9-21-2018",
@@ -19,7 +19,7 @@ export default
     status: 2
   },
   {
-    id:3,
+    _id:3,
     name: "Jordan Farris",
     description: "longer description goes here to replace elipsis.longer description goes here to replace elipsis/longer description goes here to replace elipsis",
     od: "12-1-2018",
@@ -28,7 +28,7 @@ export default
     status: 2
   },
   {
-    id:4,
+    _id:4,
     name: "Dak Prescott",
     description: "short Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     od: "9-1-2018",
@@ -37,7 +37,7 @@ export default
     status: 2
   },
   {
-    id:5,
+    _id:5,
     name: "Odell Beckham",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     od: "9-21-2018",
@@ -46,7 +46,7 @@ export default
     status: 2
   },
   {
-    id:6,
+    _id:6,
     name: "Tony Romo",
     description: "longer description goes here to replace elipsis.longer description goes here to replace elipsis/longer description goes here to replace elipsis",
     od: "12-1-2018",
@@ -55,7 +55,7 @@ export default
     status: 2
   },
   {
-    id:7,
+    _id:7,
     name: "Tony Parker",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     od: "9-21-2018",
@@ -64,7 +64,7 @@ export default
     status: 0
   },
   {
-    id:8,
+    _id:8,
     name: "Rajon Rondo",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     od: "9-21-2018",
@@ -73,7 +73,7 @@ export default
     status: 1
   },
   {
-    id:9,
+    _id:9,
     name: "Jason Garrett",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     od: "9-21-2018",
@@ -82,7 +82,7 @@ export default
     status: 2
   },
   {
-    id:10,
+    _id:10,
     name: "Tiger Woods",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     od: "9-21-2018",
@@ -91,7 +91,7 @@ export default
     status: 1
   },
   {
-    id:11,
+    _id:11,
     name: "Scott Adams",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     od: "9-21-2018",
@@ -100,7 +100,7 @@ export default
     status: 0
   },
   {
-    id:12,
+    _id:12,
     name: "John Deer",
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     od: "9-21-2018",

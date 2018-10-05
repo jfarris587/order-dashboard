@@ -1,6 +1,6 @@
-import Settings from '../../redux/settings.js';
+//import Settings from '../../redux/settings.js';
 
-const ordersDefaultState = Settings;
+const ordersDefaultState = {};
 
 export default (state = ordersDefaultState, action) => {
   var tempState = [...state];
@@ -9,9 +9,12 @@ export default (state = ordersDefaultState, action) => {
     default:
       return tempState;
 
+    case "SET_ORDERS":
+    return action.orders;
+
     case "CHANGE_ORDER_STATUS":
       tempState.forEach(function(order, i){
-        if(order.id === action.index){
+        if(order._id === action.index){
           tempState[i].status = action.status;
           return;
         }
@@ -46,8 +49,7 @@ export default (state = ordersDefaultState, action) => {
 
     case "DELETE_ORDER":
       tempState.forEach(function(order, i){
-
-        if(order.id === action.index){
+        if(order._id === action.index){
           tempState.splice(i, 1);
           return;
         }

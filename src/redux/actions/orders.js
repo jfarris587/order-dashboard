@@ -1,3 +1,8 @@
+export const setOrders = (payload) =>({
+  type: 'SET_ORDERS',
+  orders: payload
+});
+
 export const changeOrderStatus = (index, status) =>({
   type: 'CHANGE_ORDER_STATUS',
   index,

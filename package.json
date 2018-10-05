@@ -55,12 +55,13 @@
     "test": "node scripts/test.js --env=jsdom",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "server": "cd server && nodemon app.js"
+    "server": "cd src && cd server && nodemon app.js"
   },
   "devDependencies": {
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-15": "^1.1.0",
     "enzyme-adapter-react-16": "^1.5.0",
+    "mongoose": "^5.3.1",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0"
   },

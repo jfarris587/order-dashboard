@@ -1,11 +1,14 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const Order = require('./models/order');
 
 const app = express();
 const port = process.env.PORT || 9000;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 var uri = 'mongodb+srv://jfarris587:sniffles99@cluster0-kfjav.mongodb.net/bizboard';
 mongoose.connect(uri, { useNewUrlParser: true }, function (err) {
@@ -18,37 +21,38 @@ app.get('/api/orders', function(req, res){
      if (err){
        console.log('error occured in the database');
      }
+     console.log('getting orders');
      res.send(docs);
    });
 });
 
 app.post('/api/add-order/', function(req, res){
-    console.log(req.body.name);
-
-  /*
   const name = req.body.name;
   const description = req.body.description;
   const od = req.body.od;
   const dd = req.body.dd;
   const total = req.body.total;
-  const status = req.body.status;
-  Order.insertOne({},function(err,docs){
+  const status = 0;
+
+  Order.create({name: name, description: description, od: od, dd: dd, total: total, status: status},function(err,docs){
      if (err){
        console.log('error occured in the database');
      }
-     console.log(name, description, od, dd, total, status);
+     res.send(docs.id);
+     console.log('order added to database');
    });
-   */
+
 });
 
 app.post('/api/delete-order/', function(req, res){
   const id = req.body.id;
 
-  Order.findByIdAndRemove(id, function(err,docs){
+  Order.deleteOne({_id: id}, function(err,docs){
      if (err){
        console.log('error occured in the database');
      }
-     console.log(id);
+     console.log('order delted from database');
+     res.send(docs);
    });
 });
 
@@ -56,21 +60,18 @@ app.post('/api/change-status/', function(req, res){
   const id = req.body.id;
   const newStatus = req.body.status;
 
-  Order.findByIdAndUpdate(id, {$set: {status: newStatus}}, function(err,docs){
+  console.log(id, newStatus);
+
+  //db.orders.findOneAndUpdate({id: '5bbb7cdcc948ec2ce4c58005'})
+
+  Order.findOneAndUpdate({_id: id}, {$set: {status: newStatus}}, function(err,docs){
      if (err){
        console.log('error occured in the database');
      }
-     console.log(newStatus);
+     res.send(docs)
+     console.log('order status changed');
    });
 });
-
-app.post('/api/test', function(req, res){
-  const id = req.body.a;
-
-  console.log(id);
-
-});
-
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);

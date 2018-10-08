@@ -5,7 +5,6 @@ import Detail from '../components/Detail.jsx'
 
 export const Header = (props) =>{
   const details = [0,0,0,0];
-
   props.orders.forEach((order) => {
     details[order.status + 1] += 1;
     details[0] += 1;

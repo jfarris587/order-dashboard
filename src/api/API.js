@@ -20,7 +20,10 @@ class API {
     const response = await fetch('/api/add-order',
       {
         method: 'POST',
-        body: {name: 1, b: 'Textual content'}
+        body: JSON.stringify({
+          name: "HELLO WORLDS"
+        }),
+        headers: {"Content-Type": "application/json"}
       }
     );
 

@@ -5,18 +5,11 @@ import Panel from './Panel.jsx'
 import Board from './Board.jsx'
 import Login from '../components/Login.jsx'
 import { setOrders } from '../../redux/actions/orders';
-import API from '../../api/API';
 
 export class App extends Component {
   componentWillMount() {
-    var api = new API();
-    api.FETCH('/api/orders')
-    .then(res =>
-      this.props.dispatch(setOrders(res))
-    )
-    .catch(err => console.log(err));
+    this.props.dispatch(setOrders());
   }
-
 
   render(){
     if(this.props.login === false){

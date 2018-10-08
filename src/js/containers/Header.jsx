@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { loginApp } from '../../redux/actions/app';
+import { logoutApp } from '../../redux/actions/app';
 import Detail from '../components/Detail.jsx'
 
 export const Header = (props) =>{
@@ -19,7 +19,7 @@ export const Header = (props) =>{
         </div>
 
         <div className="right">
-          <button className="button button--blue" onClick={() => props.dispatch(loginApp())}>Log Out</button>
+          <button className="button button--blue" onClick={() => props.dispatch(logoutApp())}>Log Out</button>
         </div>
 
       </div>

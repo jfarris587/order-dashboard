@@ -24,7 +24,7 @@
       color: rgba(255, 255, 255, 0.15);
     }
 
-    input{
+    input, input:-webkit-autofill{
       display: block;
       background: none;
       outline:none;
@@ -38,16 +38,20 @@
       color: #eee;
       font-weight: 900;
 
+      border-radius: 7px;
+      padding: 5px 15px;
+
 
       &::placeholder{
         color: rgba(255, 255, 255, 0.15);
       }
     }
 
-    button{
+    .button{
       margin: auto auto;
       display: block;
       opacity: .4;
+      width: 45%;
 
       &:hover{
         opacity: 1;
@@ -55,6 +59,7 @@
 
       &:not(:active){
         color:#c63baf;
+        border: 1.5px solid #6979ad;
         border-color: #c63baf;
       }
     }

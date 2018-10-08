@@ -3,6 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Order = require('./models/order');
+const User = require('./models/user');
 
 const app = express();
 const port = process.env.PORT || 9000;
@@ -14,6 +15,19 @@ var uri = 'mongodb+srv://jfarris587:sniffles99@cluster0-kfjav.mongodb.net/bizboa
 mongoose.connect(uri, { useNewUrlParser: true }, function (err) {
    if (err) throw err;
    console.log('Successfully connected');
+});
+
+app.post('/api/login/', function(req, res){
+  const username = req.body.username;
+  const password = req.body.password;
+
+  User.find({username: username, password: password}, function(err,docs){
+     if (err){
+       console.log('error occured in the database');
+     }
+     res.send(docs)
+     console.log('logging in');
+   });
 });
 
 app.get('/api/orders', function(req, res){

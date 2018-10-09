@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:9000/",
-  "homepage": "https://jfarris587.github.io/order-dashboard/",
+  "homepage": "./",
   "dependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
@@ -55,7 +55,7 @@
     "test": "node scripts/test.js --env=jsdom",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "server": "cd src && cd server && nodemon app.js"
+    "server": "cd server && nodemon app.js"
   },
   "devDependencies": {
     "body-parser": "^1.18.3",

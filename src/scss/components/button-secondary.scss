@@ -1,0 +1,22 @@
+.button-secondary{
+  background: linear-gradient(to top, #e83e8c, #e83e8c);
+  border: none;
+  margin: auto auto;
+  display: block;
+  opacity: .9;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 2.0rem;
+  margin-bottom: 20px;
+
+  color: #fff;
+
+  border-radius: 7px;
+  padding: 20px 35px;
+
+
+  &:focus {
+    outline:0;
+  }
+
+}

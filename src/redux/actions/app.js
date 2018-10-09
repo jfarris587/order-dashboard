@@ -1,8 +1,13 @@
+import { setOrders } from './orders';
+
+const crypto = require('crypto');
+
 export const loginApp = (e) =>{
   var form = document.getElementById("login").elements;
   var username = form[0].value;
   var password = form[1].value;
 
+  password = crypto.createHash('md5').update(password).digest('hex');
 
   const request = fetch('/api/login',
     {
@@ -16,7 +21,6 @@ export const loginApp = (e) =>{
     }
   );
 
-
   return (dispatch) => {
     request.then(response =>
       response.json().then(data => {
@@ -24,7 +28,8 @@ export const loginApp = (e) =>{
         if(data.length > 0){
           dispatch({
             type: 'LOGIN_APP'
-          })
+          });
+          dispatch(setOrders());
         }
       })
     )

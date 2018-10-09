@@ -1,68 +1,55 @@
-.login.container{
-  max-width: 800px;
-  min-height: 8 * (50px);
+.login{
   border-radius: 8px;
-  overflow: hidden;
-  margin: auto;
-
-  background: $secondary-blue;
-  border-top: 50px solid rgba(255, 255, 255, 0.15);
-
+  height: calc(100vh - 60px);
+  width: calc(100vh - 60px);
   display: flex;
+  margin: auto;
   flex-direction: column;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: none;
 
   form{
-    width: 55%;
     margin: auto;
     position: relative;
     top: -20px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
 
     h1{
+      font-size: 4rem;
       text-align: center;
       margin-bottom: 20px;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.15);
+      color: #fff;
     }
 
-    input, input:-webkit-autofill{
+    .input, .input:-webkit-autofill{
       display: block;
-      background: none;
+      background: #fff;
       outline:none;
       border: none;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
 
       width: 100%;
       font-size: 2.0rem;
       margin-bottom: 20px;
 
-      color: #eee;
-      font-weight: 900;
+      color: $primary-blue;
 
       border-radius: 7px;
-      padding: 5px 15px;
+      padding: 25px 35px;
 
 
       &::placeholder{
-        color: rgba(255, 255, 255, 0.15);
+        color: $primary-blue;
       }
     }
 
-    .button{
-      margin: auto auto;
-      display: block;
-      opacity: .4;
-      width: 45%;
 
-      &:hover{
-        opacity: 1;
-      }
-
-      &:not(:active){
-        color:#c63baf;
-        border: 1.5px solid #6979ad;
-        border-color: #c63baf;
-      }
-    }
 
   }
 }
@@ -85,6 +72,7 @@
 
 @include media-breakpoint-down(xs) {
   .login.container{
-    margin: 0;
+    margin: auto;
+    height: calc(100vh - 20px);
   }
 }

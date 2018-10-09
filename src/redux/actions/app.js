@@ -1,10 +1,6 @@
 import { setOrders } from './orders';
 
-export const loginApp = (e) =>{
-  var form = document.getElementById("login").elements;
-  var username = form[0].value;
-  var password = form[1].value;
-
+export const loginApp = (username, password) =>{
   const request = fetch('/api/login',
     {
       method: 'POST',
@@ -20,7 +16,6 @@ export const loginApp = (e) =>{
   return (dispatch) => {
     request.then(response =>
       response.json().then(data => {
-        console.log(data.length);
         if(data.length > 0){
           dispatch({
             type: 'LOGIN_APP'
@@ -28,7 +23,13 @@ export const loginApp = (e) =>{
           dispatch(setOrders());
         }
       })
+      .catch(error => {
+        alert('OOPS! Something went wrong');
+      })
     )
+    .catch(error => {
+      alert('OOPS! Something went wrong');
+    })
   }
 };
 
@@ -36,17 +37,7 @@ export const logoutApp = () =>({
   type: 'LOGIN_APP'
 });
 
-export const signUpApp = (e) =>{
-  var form = document.getElementById("login").elements;
-  var username = form[0].value;
-  var email = form[1].value;
-  var password = form[2].value;
-  var confirm = form[3].value;
-
-  if(password !== confirm){
-    //return () => {}
-  }
-
+export const signUpApp = (username, email, password) =>{
   const request = fetch('/api/signup',
     {
       method: 'POST',
@@ -60,6 +51,11 @@ export const signUpApp = (e) =>{
   );
 
   return (dispatch) => {
-    //request.then(response =>{})
+    request.then(
+      response =>{}
+    )
+    .catch(error => {
+      alert('OOPS! Something went wrong');
+    })
   }
 };

@@ -1,6 +1,7 @@
 export const setOrders = () =>{
   const request = fetch('/api/orders');
 
+
   return (dispatch) => {
     request.then(response =>
       response.json().then(data => {
@@ -11,7 +12,13 @@ export const setOrders = () =>{
           }
         );
       })
+      .catch(error => {
+        alert('OOPS! Something went wrong');
+      })
     )
+    .catch(error => {
+      alert('OOPS! Something went wrong');
+    })
   }
 };
 
@@ -36,6 +43,9 @@ export const changeOrderStatus = (id, status) =>{
           status
         }
       );
+    })
+    .catch(error => {
+      alert('OOPS! Something went wrong');
     })
   }
 };
@@ -88,6 +98,9 @@ export const addOrder = () =>{
         }
       );
     })
+    .catch(error => {
+      alert('OOPS! Something went wrong');
+    })
   }
 };
 
@@ -111,6 +124,9 @@ export const deleteOrder = (id) =>{
           id: id
         }
       );
+    })
+    .catch(error => {
+      alert('OOPS! Something went wrong');
     })
   }
 };

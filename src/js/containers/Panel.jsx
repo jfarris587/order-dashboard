@@ -19,8 +19,7 @@ const Panel = (props) =>{
     <div className="panel container">
       <div className="controls">
         <p>Use the board to add orders and track their progress.</p>
-        <button className={"button delete"+deleting} onClick={() => props.dispatch(changeMode("delete"))}>Delete Order</button>
-        <button className={"button button--blue"+adding} onClick={() => props.dispatch(changeMode("add"))}>Add Order</button>
+        <button className={"button-secondary"+adding} onClick={() => props.dispatch(changeMode("add"))}>Add Order</button>
       </div>
       <Entry
         mode = {props.display.mode}

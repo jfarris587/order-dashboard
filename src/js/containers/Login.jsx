@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginApp } from '../../redux/actions/app';
+import { signUpApp } from '../../redux/actions/app';
 import Toggle from '../components/Toggle.jsx'
 
 export class Login extends Component {
@@ -34,9 +35,7 @@ export class Login extends Component {
 
         <form id="login">
 
-
           <h1>Dashboard {button}</h1>
-
 
           <input className="input" required type="text" placeholder="Username"></input>
 
@@ -46,8 +45,11 @@ export class Login extends Component {
 
           {this.state.mode === 1 && <input className="input" required type="password" placeholder="Confirm Password"></input>}
 
+          {this.state.mode === 0 && <button type="button" className="button-secondary" onClick={() => this.props.dispatch(loginApp())}>Sign in</button>}
 
-          <button type="button" className="button-secondary" onClick={() => this.props.dispatch(loginApp())}>{button}</button>
+
+          {this.state.mode === 1 && <button type="button" className="button-secondary" onClick={() => this.props.dispatch(signUpApp())}>Sign up</button>}
+
         </form>
       </div>
     );

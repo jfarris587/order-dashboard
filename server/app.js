@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Order = require('./models/order');
 const User = require('./models/user');
+const crypto = require('crypto');
 
 const app = express();
 const port = process.env.PORT || 9000;
@@ -16,9 +17,39 @@ mongoose.connect(uri, { useNewUrlParser: true }, function (err) {
    console.log('Successfully connected');
 });
 
+app.post('/api/signup/', function(req, res){
+  var username = req.body.username;
+  var email = req.body.email;
+  var password = req.body.password;
+
+  password = crypto.createHash('md5').update(password).digest('hex');
+
+  User.find({username: username}, function(err,docs){
+     if (err){
+       console.log('error occured in the database');
+     }
+     if(docs.length > 0){
+       res.send("user exists");
+       console.log("user exists");
+     }
+     else{
+       User.create({username: username, email:email, password: password}, function(err,docs){
+          if (err){
+            console.log('error occured in the database');
+          }
+            res.send("user added to database");
+            console.log("user added to database");
+        });
+     }
+   });
+});
+
 app.post('/api/login/', function(req, res){
-  const username = req.body.username;
-  const password = req.body.password;
+  var username = req.body.username;
+  var password = req.body.password;
+
+  password = crypto.createHash('md5').update(password).digest('hex');
+
 
   User.find({username: username, password: password}, function(err,docs){
      if (err){

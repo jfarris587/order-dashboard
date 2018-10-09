@@ -22,9 +22,9 @@ const Entry = (props) =>{
       <div className="entry__detail total"><p>Total:</p><input type="number" required="required" placeholder="19.99"></input></div>
 
       <div className="entry__buttons">
-        <button className="button button--blue" type="button" onClick={() => props.dispatch(changeMode("default"))}>Exit</button>
+        <button className="button-secondary exit" type="button" onClick={() => props.dispatch(changeMode("default"))}>Exit</button>
 
-        <button className="button button--pink" type="button" onClick={() => props.dispatch(addOrder())}>Submit</button>
+        <button className="button-secondary submit" type="button" onClick={() => props.dispatch(addOrder())}>Submit</button>
       </div>
     </form>
   );

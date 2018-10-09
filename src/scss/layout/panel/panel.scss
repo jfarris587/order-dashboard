@@ -11,8 +11,14 @@
       margin-right: auto;
     }
 
-    .button{
+    .button-secondary{
       display: block;
+      margin: 0;
+      width: 140px;
+      padding: 10px 0;
+      font-size: 1.7rem;
+      opacity: .85;
+      background: $green;
     }
   }
 }

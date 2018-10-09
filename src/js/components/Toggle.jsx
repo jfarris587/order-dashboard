@@ -12,7 +12,7 @@ const Toggle = (props) =>{
           toggled = "toggled";
         }
         return (
-          <div className={`toggle-button ${toggled}`} onClick={()=>props.changeMode(i)}>
+          <div key={i} className={`toggle-button ${toggled}`} onClick={()=>props.changeMode(i)}>
             {array[i]}
           </div>
         );

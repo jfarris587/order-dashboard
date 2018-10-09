@@ -34,7 +34,7 @@ export class Order extends Component {
     return (
       <div className="order-wrapper">
         <div className="order"  onClick={() => this.expandOrder(this.props.data.index)}>
-          <div className="order__detail toggle"><i className="fas fa-bars"></i></div>
+          <div className="order__detail toggler"><i className="fas fa-bars"></i></div>
 
           <div className="order__detail name"><p>{this.props.data.name}</p></div>
 

@@ -13,9 +13,19 @@
   margin: 0px 0 0px 0px;
   //transition: max-height 700ms ease-in-out;
 
-  button{
+  .button-secondary{
+    display: inline-block;
     margin: 10px 25px 15px 0 ;
+    width: 140px;
+    padding: 10px 0;
+    font-size: 1.7rem;
+    opacity: .75;
+
+    &.submit{
+      background: #33c3bf;
+    }
   }
+
 
   &__detail{
     height: 100%;

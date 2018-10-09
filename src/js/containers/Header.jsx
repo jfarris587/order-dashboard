@@ -19,7 +19,7 @@ export const Header = (props) =>{
         </div>
 
         <div className="right">
-          <button className="button button--blue" onClick={() => props.dispatch(logoutApp())}>Log Out</button>
+          <button className="button-secondary" onClick={() => props.dispatch(logoutApp())}>Log Out</button>
         </div>
 
       </div>

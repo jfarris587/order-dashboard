@@ -3,7 +3,7 @@ import React from "react";
 const Labels = (props) =>{
   return (
     <div className="labels">
-      <div className="labels__detail toggle"></div>
+      <div className="labels__detail toggler"></div>
 
       <div className="labels__detail name"><p>name</p></div>
 

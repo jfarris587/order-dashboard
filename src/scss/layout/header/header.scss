@@ -29,15 +29,18 @@
       display: flex;
       align-items: flex-end;
 
-      button{
+      .button-secondary{
+        display: block;
         margin: 0;
-        width: 100px;
-        height: 35px;
-        line-height: 11px;
-        border-radius: 8px;
-        border: 1px solid;
-        font-weight: 100;
-        margin-bottom: 10px;
+        width: 140px;
+        padding: 10px 0;
+        font-size: 1.7rem;
+        opacity: .75;
+        background: $secondary-blue;
+
+        &:hover{
+          opacity: 1;
+        }
       }
     }
   }

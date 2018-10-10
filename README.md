@@ -1,24 +1,40 @@
 # BizBoard Application
 
-Bizboard is a full stack ReactJS web application catered to small businesses. From bakeries to tailors and barbers, local businesses need a way of tracking orders and their clients. The high end Microsoft and cloud technologies are always developed for larger businesses and enterprises. In addition, they cost money and are hard to use.
+Bizboard is a full stack ReactJS web application catered to small businesses. From bakeries to tailors and barbers, local businesses need a way of tracking orders and their clients. This web application lets a business add orders to their dashboard which has all the information they need for all their transactions.
 
-This web application lets a business add orders to their dashboard which has all the information they need about the order. The employer can track the progress of the order (open/pending/closed) to know if the order is complete or paid. With it's responsive design, it can be used where ever on whatever device. From the iPad at the store to a phone while on the go, a business can add orders to stay on top of production.
+## Getting Started
 
-Fully hashed authentication allows for the users data to stay secure like all the pay-services that the big companies use, however, BizBoard is much more feasible for the small local business.  
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. To go to the official project release, visit _____________.
+
+### Installing Locally
+
+Use **npm install** to install packages, and then run with **npm run** to create the build package for deployment use **npm build**
+
+
+## Motivation
+
+The high end Microsoft and cloud technologies are always developed for larger businesses and enterprises. In addition, they cost money and are hard to use. This free open source project allows businesses to not have to get caught up in which SAAS to purchase. From the iPad at the store to a phone while on the go, employers stay on top of production.
 
 ![](https://i.imgur.com/vEkye5s.png)
 
-# Technology
+## Development
+
+### Built With
 
 - React
 - Redux
-- HTML
 - SASS
-- MySQL
 - NodeJS
-- Webpack
+- Express
+- Mongoose
+- MongoDB
 
-# How to Run
+### React/Redux
 
+### NodeJS/Express
 
-Use **npm install** to install packages, and then run with **npm run** to create the build package for deployment use **npm build**
+### Mongoose/MongoDB
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

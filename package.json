@@ -2,6 +2,7 @@
   "name": "order-dashboard",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:9000",
   "homepage": "./",
   "dependencies": {
     "autoprefixer": "7.1.6",

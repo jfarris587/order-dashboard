@@ -52,3 +52,9 @@
     margin-bottom: 5px;
   }
 }
+
+@include media-breakpoint-down(sm) {
+  .header .title{
+    margin-top: 0;
+  }
+}

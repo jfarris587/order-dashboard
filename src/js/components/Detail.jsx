@@ -28,7 +28,7 @@ const Detail = (props) => {
   }
 
   return (
-    <div className="detail__wrapper col-lg-3 col-md-6 col-sm-6">
+    <div className="detail__wrapper col-lg-3 col-md-6 col-6">
       <div className={"detail detail-"+props.id+selected} onClick={() => props.dispatch(showOrderType(props.id))}>
         <h1>{props.data}<span>{type}</span></h1>
         <i className={"fas fa-" + classIcon}></i>

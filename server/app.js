@@ -69,8 +69,11 @@ app.post('/api/login/', function(req, res){
    });
 });
 
-app.get('/api/orders', function(req, res){
-  Order.find({},function(err,docs){
+app.post('/api/orders', function(req, res){
+  var username = req.body.username;
+
+  User.findOne({username: username},{orders: 1, _id:0},
+    function(err,docs){
      if (err){
        console.log('ORDERS: 500');
        res.status(500).send();
@@ -83,6 +86,7 @@ app.get('/api/orders', function(req, res){
 });
 
 app.post('/api/add-order/', function(req, res){
+  const username = req.body.username;
   const name = req.body.name;
   const description = req.body.description;
   const od = req.body.od;
@@ -90,49 +94,81 @@ app.post('/api/add-order/', function(req, res){
   const total = req.body.total;
   const status = 0;
 
-  Order.create({name: name, description: description, od: od, dd: dd, total: total, status: status},function(err,docs){
-    if (err){
-      console.log('ADD ORDER: 500');
-      res.status(500).send();
+
+  User.update({username: username},
+    {
+      $push:{
+        orders: {
+          _id: mongoose.Types.ObjectId(),
+          name: name,
+          description: description,
+          od: od,
+          dd: dd,
+          total: total,
+          status: status
+        }
+      }
+    },
+    function(err,docs){
+      if (err){
+        console.log('ADD ORDER: 500');
+        res.status(500).send();
+      }
+      else{
+        console.log('ADD ORDER: 200');
+        res.status(200).send(docs);
+      }
     }
-    else{
-      console.log('ADD ORDER: 200');
-      res.status(200).send(docs);
-    }
-   });
+  );
 
 });
 
 app.post('/api/delete-order/', function(req, res){
+  const username = req.body.username;
   const id = req.body.id;
-
-  Order.deleteOne({_id: id}, function(err,docs){
-    if (err){
-      console.log('ADD ORDER: 500');
-      res.status(500).send();
+  User.update({username: username},
+    {
+      $pull:{
+        orders: {
+          _id: mongoose.Types.ObjectId(id)
+        }
+      }
+    },
+    function(err,docs){
+      if (err){
+        console.log('ADD ORDER: 500');
+        res.status(500).send();
+      }
+      else{
+        console.log('ADD ORDER: 200');
+        res.status(200).send(docs);
+      }
     }
-    else{
-      console.log('ADD ORDER: 200');
-      res.status(200).send();
-    }
-   });
+  );
 });
 
 app.post('/api/change-status/', function(req, res){
+  const username = req.body.username;
   const id = req.body.id;
   const newStatus = req.body.status;
 
-  console.log(id, newStatus);
+  User.update({username: username},
+    {
+      $set:{
 
-  //db.orders.findOneAndUpdate({id: '5bbb7cdcc948ec2ce4c58005'})
-
-  Order.findOneAndUpdate({_id: id}, {$set: {status: newStatus}}, function(err,docs){
-     if (err){
-       console.log('error occured in the database');
-     }
-     res.send(docs)
-     console.log('order status changed');
-   });
+      }
+    },
+    function(err,docs){
+      if (err){
+        console.log('ADD ORDER: 500');
+        res.status(500).send();
+      }
+      else{
+        console.log('ADD ORDER: 200');
+        res.status(200).send(docs);
+      }
+    }
+  );
 });
 
 app.listen(port, () => {

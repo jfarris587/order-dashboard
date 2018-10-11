@@ -24,10 +24,18 @@ const Entry = (props) =>{
       <div className="entry__buttons">
         <button className="button-secondary exit" type="button" onClick={() => props.dispatch(changeMode("default"))}>Exit</button>
 
-        <button className="button-secondary submit" type="button" onClick={() => props.dispatch(addOrder())}>Submit</button>
+        <button className="button-secondary submit" type="button" onClick={() => props.dispatch(addOrder(props.login.username))}>Submit</button>
       </div>
     </form>
   );
 }
 
-export default connect()(Entry);
+const mapStateToProps = (state) => {
+  return {
+    login: state.login
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Entry);

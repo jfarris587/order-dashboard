@@ -1,10 +1,17 @@
-const loginDefaultState = false;
+const loginDefaultState = {
+  access: false,
+  username: null
+};
 
 export default (state = loginDefaultState, action) => {
+  var tempState = {...state};
   switch (action.type) {
     default:
-      return state;
+      return tempState;
     case "LOGIN_APP":
-      return !state;
+      tempState.access = !tempState.access;
+      tempState.username = action.username;
+      return tempState;
+
   }
 }

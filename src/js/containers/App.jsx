@@ -8,11 +8,11 @@ import { setOrders } from '../../redux/actions/orders';
 
 export class App extends Component {
   componentWillMount() {
-    this.props.dispatch(setOrders(this.props.userID));
+    this.props.dispatch(setOrders('admin'));
   }
 
   render(){
-    if(this.props.login === false){
+    if(this.props.login.access === false){
       return (
         <Login />
       );

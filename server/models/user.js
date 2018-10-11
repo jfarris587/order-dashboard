@@ -8,6 +8,22 @@ const orderSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  fname: {
+    type: String,
+    required: true
+  },
+  lname: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: String,
+    required: true
+  },
+  orders: {
+    type: Array,
+    required: true
   }
 }, {collection: 'users'});
 

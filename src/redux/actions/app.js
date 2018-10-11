@@ -17,9 +17,10 @@ export const loginApp = (username, password) =>{
     request.then(response => {
       if(response.status === 200){
         dispatch({
-          type: 'LOGIN_APP'
+          type: 'LOGIN_APP',
+          username: username
         });
-        dispatch(setOrders());
+        dispatch(setOrders(username));
       }
       else if(response.status === 401){
         alert('username or password is incorrect');

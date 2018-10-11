@@ -75,6 +75,7 @@ export class Board extends Component {
   }
 
   render(){
+    console.log(this.state.orders);
     var translated = this.state.page * (-100);
     return (
 

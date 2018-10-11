@@ -1,6 +1,13 @@
-export const setOrders = (userID) =>{
-  const request = fetch('/api/orders');
-
+export const setOrders = (username) =>{
+  const request = fetch('/api/orders',
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        username
+      }),
+      headers: {"Content-Type": "application/json"}
+    }
+  );
   return (dispatch) => {
     request.then(response => {
       if(response.status === 500){
@@ -8,12 +15,14 @@ export const setOrders = (userID) =>{
       }
       else if(response.status === 200){
         response.json().then(data => {
+
           dispatch(
             {
               type: "SET_ORDERS",
-              orders: data
+              orders: data.orders
             }
           );
+
         })
         .catch(error => {
           alert('OOPS! Something went wrong');
@@ -59,7 +68,7 @@ export const changeOrderStatus = (id, status) =>{
   }
 };
 
-export const addOrder = () =>{
+export const addOrder = (username) =>{
   var form = document.getElementById("entry").elements;
   var name = form[0].value;
   var od = form[1].value;
@@ -86,6 +95,7 @@ export const addOrder = () =>{
     {
       method: 'POST',
       body: JSON.stringify({
+        username: username,
         name,
         description,
         od,
@@ -118,13 +128,13 @@ export const addOrder = () =>{
   }
 };
 
-export const deleteOrder = (id) =>{
-
+export const deleteOrder = (id, username) =>{
   const request = fetch('/api/delete-order',
     {
       method: 'POST',
       body: JSON.stringify({
-        id
+        id,
+        username
     }),
       headers: {"Content-Type": "application/json"}
     }

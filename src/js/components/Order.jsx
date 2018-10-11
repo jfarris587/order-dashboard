@@ -61,7 +61,7 @@ export class Order extends Component {
                 Status:
                 {StatusList}
               </p>
-              <p className="delete" onClick={() => this.props.dispatch(deleteOrder(this.props.id))}>delete</p>
+              <p className="delete" onClick={() => this.props.dispatch(deleteOrder(this.props.id, this.props.login.username))}>delete</p>
             </div>
           </div>
         }
@@ -72,7 +72,8 @@ export class Order extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    orders: state.orders
+    orders: state.orders,
+    login: state.login
   }
 }
 

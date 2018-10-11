@@ -1,21 +1,25 @@
-export const setOrders = () =>{
+export const setOrders = (userID) =>{
   const request = fetch('/api/orders');
 
-
   return (dispatch) => {
-    request.then(response =>
-      response.json().then(data => {
-        dispatch(
-          {
-            type: "SET_ORDERS",
-            orders: data
-          }
-        );
-      })
-      .catch(error => {
-        alert('OOPS! Something went wrong');
-      })
-    )
+    request.then(response => {
+      if(response.status === 500){
+        alert('server error, try again later.')
+      }
+      else if(response.status === 200){
+        response.json().then(data => {
+          dispatch(
+            {
+              type: "SET_ORDERS",
+              orders: data
+            }
+          );
+        })
+        .catch(error => {
+          alert('OOPS! Something went wrong');
+        })
+      }
+    })
     .catch(error => {
       alert('OOPS! Something went wrong');
     })
@@ -35,14 +39,19 @@ export const changeOrderStatus = (id, status) =>{
   );
 
   return (dispatch) => {
-    request.then((data) => {
-      dispatch(
-        {
-          type: 'CHANGE_ORDER_STATUS',
-          id,
-          status
-        }
-      );
+    request.then(response => {
+      if(response.status === 500){
+        alert('server error, try again later.')
+      }
+      else if(response.status === 200){
+        dispatch(
+          {
+            type: 'CHANGE_ORDER_STATUS',
+            id,
+            status
+          }
+        );
+      }
     })
     .catch(error => {
       alert('OOPS! Something went wrong');
@@ -89,14 +98,19 @@ export const addOrder = () =>{
 
 
   return (dispatch) => {
-    request.then((data) => {
-      orderObj._id = data;
-      dispatch(
-        {
-          type: "ADD_ORDER",
-          payload: orderObj
-        }
-      );
+    request.then(response => {
+      orderObj._id = response;
+      if(response.status === 500){
+        alert('server error, try again later.')
+      }
+      else if(response.status === 200){
+        dispatch(
+          {
+            type: "ADD_ORDER",
+            payload: orderObj
+          }
+        );
+      }
     })
     .catch(error => {
       alert('OOPS! Something went wrong');
@@ -117,13 +131,18 @@ export const deleteOrder = (id) =>{
   );
 
   return (dispatch) => {
-    request.then((data) => {
-      dispatch(
-        {
-          type: 'DELETE_ORDER',
-          id: id
-        }
-      );
+    request.then(response => {
+      if(response.status === 500){
+        alert('server error, try again later.')
+      }
+      else if(response.status === 200){
+        dispatch(
+          {
+            type: 'DELETE_ORDER',
+            id: id
+          }
+        );
+      }
     })
     .catch(error => {
       alert('OOPS! Something went wrong');

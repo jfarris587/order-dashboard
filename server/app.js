@@ -26,19 +26,21 @@ app.post('/api/signup/', function(req, res){
 
   User.find({username: username}, function(err,docs){
      if (err){
-       console.log('error occured in the database');
+       res.status(500).send();
+       console.log('STATUS: 500');
      }
      if(docs.length > 0){
-       res.send("user exists");
-       console.log("user exists");
+       res.status(401).send();
+       console.log('STATUS: 401');
      }
      else{
        User.create({username: username, email:email, password: password}, function(err,docs){
           if (err){
-            console.log('error occured in the database');
+            res.status(500).send();
+            console.log('STATUS: 500');
           }
-            res.send("user added to database");
-            console.log("user added to database");
+          res.status(200).send();
+          console.log('STATUS: 200');
         });
      }
    });
@@ -50,23 +52,33 @@ app.post('/api/login/', function(req, res){
 
   password = crypto.createHash('md5').update(password).digest('hex');
 
-
-  User.find({username: username, password: password}, function(err,docs){
+  User.find({username: username, password: password},
+    function(err,docs){
      if (err){
-       console.log('error occured in the database');
+       res.status(500).send();
+       console.log('STATUS: 500');
      }
-     res.send(docs)
-     console.log('logging in');
+     if(docs.length > 0){
+       res.status(200).send(docs);
+       console.log('STATUS: 200');
+     }
+     else{
+       res.status(401).send();
+       console.log('STATUS: 401');
+     }
    });
 });
 
 app.get('/api/orders', function(req, res){
   Order.find({},function(err,docs){
      if (err){
-       console.log('error occured in the database');
+       console.log('ORDERS: 500');
+       res.status(500).send();
      }
-     console.log('getting orders');
-     res.send(docs);
+     else {
+       console.log('ORDERS: 200');
+       res.status(200).send(docs);
+     }
    });
 });
 
@@ -79,11 +91,14 @@ app.post('/api/add-order/', function(req, res){
   const status = 0;
 
   Order.create({name: name, description: description, od: od, dd: dd, total: total, status: status},function(err,docs){
-     if (err){
-       console.log('error occured in the database');
-     }
-     res.send(docs.id);
-     console.log('order added to database');
+    if (err){
+      console.log('ADD ORDER: 500');
+      res.status(500).send();
+    }
+    else{
+      console.log('ADD ORDER: 200');
+      res.status(200).send(docs);
+    }
    });
 
 });
@@ -92,11 +107,14 @@ app.post('/api/delete-order/', function(req, res){
   const id = req.body.id;
 
   Order.deleteOne({_id: id}, function(err,docs){
-     if (err){
-       console.log('error occured in the database');
-     }
-     console.log('order delted from database');
-     res.send(docs);
+    if (err){
+      console.log('ADD ORDER: 500');
+      res.status(500).send();
+    }
+    else{
+      console.log('ADD ORDER: 200');
+      res.status(200).send();
+    }
    });
 });
 

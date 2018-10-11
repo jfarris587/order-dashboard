@@ -8,7 +8,7 @@ import { setOrders } from '../../redux/actions/orders';
 
 export class App extends Component {
   componentWillMount() {
-    this.props.dispatch(setOrders());
+    this.props.dispatch(setOrders(this.props.userID));
   }
 
   render(){
@@ -31,7 +31,8 @@ export class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    login: state.login
+    login: state.login,
+    userID: state.userID
   }
 }
 

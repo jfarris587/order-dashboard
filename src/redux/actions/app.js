@@ -14,19 +14,20 @@ export const loginApp = (username, password) =>{
   );
 
   return (dispatch) => {
-    request.then(response =>
-      response.json().then(data => {
-        if(data.length > 0){
-          dispatch({
-            type: 'LOGIN_APP'
-          });
-          dispatch(setOrders());
-        }
-      })
-      .catch(error => {
-        alert('OOPS! Something went wrong');
-      })
-    )
+    request.then(response => {
+      if(response.status === 200){
+        dispatch({
+          type: 'LOGIN_APP'
+        });
+        dispatch(setOrders());
+      }
+      else if(response.status === 401){
+        alert('username or password is incorrect');
+      }
+      else if(response.status === 500){
+        alert('server error, try again later');
+      }
+    })
     .catch(error => {
       alert('OOPS! Something went wrong');
     })
@@ -51,9 +52,14 @@ export const signUpApp = (username, email, password) =>{
   );
 
   return (dispatch) => {
-    request.then(
-      response =>{}
-    )
+    request.then(response => {
+      if(response.status === 401){
+        alert('username already exists');
+      }
+      else if(response.status === 500){
+        alert('server error, try again later');
+      }
+    })
     .catch(error => {
       alert('OOPS! Something went wrong');
     })

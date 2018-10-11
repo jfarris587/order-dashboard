@@ -35,17 +35,13 @@ The high end Microsoft and cloud technologies are always developed for larger bu
 For the front end, ReactJS is used to achieve component-driven code in the UI. Below is a code snippet that shows how orders are populated from props and are then rendered out onto the screen after React's Lifecycle Methods are run.
 
 ```
-{this.state.orders.map((orderSection, i) => (
-  <div key={i} className="orders" style={{transform: "translateX("+translated+"%)"}}>
-    {orderSection.map((order, index) => (
-      <Order
-        key={order._id}
-        id={order._id}
-        index={index}
-        data={order}
-      />
-    ))}
-  </div>
+{this.state.orders.map((order, index) => (
+  <Order
+    key={order._id}
+    id={order._id}
+    index={index}
+    data={order}
+  />
 ))}
 ```
 
@@ -59,7 +55,6 @@ app.post('/api/login/', function(req, res){
   var password = req.body.password;
 
   password = crypto.createHash('md5').update(password).digest('hex');
-
 
   User.find({username: username, password: password}, function(err,docs){
      if (err){
@@ -82,7 +77,8 @@ The database that NodeJS connects to is a MongoDB NoSQL database. A non-relation
       "$oid":"5bb770b4b3ec26d79048e561"
     },
   "name":"Rashad Casey",
-  "description":"odio tristique pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia vitae, sodales at, velit.",
+  "description":"odio tristique pharetra. Quisque ac libero nec ligula consectetuer
+  rhoncus. Nullam velit dui, semper et, lacinia vitae, sodales at, velit.",
   "od":"08-04-18",
   "dd":"22-10-17",
   "total":"175.52",

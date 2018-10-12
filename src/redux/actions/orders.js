@@ -35,11 +35,12 @@ export const setOrders = (username) =>{
   }
 };
 
-export const changeOrderStatus = (id, status) =>{
+export const changeOrderStatus = (id, username, status) =>{
   const request = fetch('/api/change-status',
     {
       method: 'POST',
       body: JSON.stringify({
+        username,
         id,
         status,
       }),

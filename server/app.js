@@ -149,22 +149,26 @@ app.post('/api/delete-order/', function(req, res){
 
 app.post('/api/change-status/', function(req, res){
   const username = req.body.username;
-  const id = req.body.id;
+  const orderID = req.body.id;
   const newStatus = req.body.status;
 
-  User.update({username: username},
+  User.update(
+    {
+      username: username,
+      'orders._id': mongoose.Types.ObjectId(orderID)
+    },
     {
       $set:{
-
+        'orders.$.status': newStatus
       }
     },
     function(err,docs){
       if (err){
-        console.log('ADD ORDER: 500');
+        console.log('CHANGE STATUS: 500');
         res.status(500).send();
       }
       else{
-        console.log('ADD ORDER: 200');
+        console.log('CHANGE STATUS: 200');
         res.status(200).send(docs);
       }
     }

@@ -28,7 +28,7 @@ export class Order extends Component {
     var StatusList = [];
 
     for(let i = 0; i < 3; i++){
-      StatusList.push(<Status key={i} status={i} id={this.props.id} selected={this.props.data.status} changeStatus={this.props.changeStatus}/>);
+      StatusList.push(<Status key={i} status={i} id={this.props.id} selected={this.props.data.status}/>);
     }
 
     return (

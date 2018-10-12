@@ -18,8 +18,16 @@ const Status = (props) =>{
 
   var classes = `symbol ${status} ${selected}`;
   return (
-    <span className={classes} onClick={() => props.dispatch(changeOrderStatus(props.id, props.status))}> {status}</span>
+    <span className={classes} onClick={() => props.dispatch(changeOrderStatus(props.id, props.login.username, props.status))}> {status}</span>
   );
 }
 
-export default connect()(Status);
+const mapStateToProps = (state) => {
+  return {
+    login: state.login
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Status);

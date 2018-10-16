@@ -21,8 +21,16 @@ app.post('/api/signup/', function(req, res){
   var username = req.body.username;
   var email = req.body.email;
   var password = req.body.password;
-
+  var orders;
   password = crypto.createHash('md5').update(password).digest('hex');
+
+  User.findOne({username: 'admin'}, {orders: 1}, function(err,docs){
+    if (err){
+       res.status(500).send();
+       console.log('STATUS: 500');
+     }
+     orders = docs.orders;
+   });
 
   User.find({username: username}, function(err,docs){
      if (err){
@@ -34,7 +42,7 @@ app.post('/api/signup/', function(req, res){
        console.log('STATUS: 401');
      }
      else{
-       User.create({username: username, email:email, password: password}, function(err,docs){
+       User.create({username: username, email:email, password: password, orders: orders}, function(err,docs){
           if (err){
             res.status(500).send();
             console.log('STATUS: 500');

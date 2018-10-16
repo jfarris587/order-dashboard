@@ -70,12 +70,6 @@ export class Login extends Component {
 
         {this.state.mode === 1 && <input className="input" required type="email" placeholder="Email"></input>}
 
-        {this.state.mode === 1 && <input className="input" required type="email" placeholder="First Name"></input>}
-
-
-        {this.state.mode === 1 && <input className="input" required type="email" placeholder="LastName"></input>}
-
-
         <input className="input" required type="password" placeholder="Password"></input>
 
         {this.state.mode === 1 && <input className="input" required type="password" placeholder="Confirm Password"></input>}

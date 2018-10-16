@@ -8,7 +8,7 @@ import { setOrders } from '../../redux/actions/orders';
 
 export class App extends Component {
   componentWillMount() {
-    this.props.dispatch(setOrders('admin'));
+    //this.props.dispatch(setOrders('jfarris'));
   }
 
   render(){

@@ -31,7 +31,13 @@ export class Board extends Component {
       tempState.page -= 1;
     }
 
+    if(tempState.orders.length === 0){
+      tempState.totalPages = 0;
+      tempState.page = 0;
+    }
+
     this.setState(tempState);
+    console.log(tempState.orders);
   }
 
   filterOrders = (orders, show) =>{
@@ -75,7 +81,7 @@ export class Board extends Component {
   }
 
   render(){
-    console.log(this.state.orders);
+    console.log(this.state.page);
     var translated = this.state.page * (-100);
     return (
 
